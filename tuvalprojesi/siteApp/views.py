@@ -15,7 +15,7 @@ def index(request):
         if arama.__len__:
             print('Post Çalışıyor')
     # Buradan sql yollacağız şuan da pass!
-
+    # Buradan db tarafına işlem yapacağız.
 
     return render(request, 'index.html')
 
