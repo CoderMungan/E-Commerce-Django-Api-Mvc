@@ -1,6 +1,22 @@
 const darklightbtn = document.getElementById("darklightbtn");
-const bodySelect = document.getElementById('body')
+const bodySelect = document.getElementById('body');
+const hrler = document.querySelectorAll("hr")
 const currentMode = localStorage.getItem("mode");
+
+
+if (hrler){
+    hrler.forEach((e) => {
+        if(currentMode == "dark"){
+            e.style.border = "5px solid #0d6efd";
+            e.style.borderRadius = "10px"
+        }
+        else if(currentMode == "light"){
+            e.style.border = "5px solid #fd7e14";
+            e.style.borderRadius = "10px"
+        }
+        
+    })
+}
 
 
 if (currentMode === "dark") {
