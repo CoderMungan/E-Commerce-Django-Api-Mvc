@@ -2,7 +2,7 @@
     {% for urun in urunler %}
     <div class="col-md-4">
         <div class="card">
-            <img src={{urun.image}} class="card-img-top" alt="...">
+            <img src=../../../{{urun.image}} class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title text-center">{{urun.sanatEseriBaslik}}</h5>
                 <p class="card-text text-center">{{urun.sanatEseriAciklamasi}}</p>
@@ -16,41 +16,3 @@
         </div>
     </div>
     {% endfor %}
-
-    {% if searchUrunler is not len %}
-    {% for urun in urunler %}
-    <div class="col-md-4">
-        <div class="card">
-            <img src={{urun.image}} class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title text-center">{{urun.sanatEseriBaslik}}</h5>
-                <p class="card-text text-center">{{urun.sanatEseriAciklamasi}}</p>
-            </div>
-            <div class="card-body text-center">
-                <button class="btn btn-warning">Detay'a git</button>
-            </div>
-            <div class="card-footer text-center">
-                <small class="text-body-secondary">{{urun.createdAt}}</small>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-    {% else %}
-    {% for aramaurun in searcUrunler %}
-    <div class="col-md-4">
-        <div class="card">
-            <img src={{aramaurun.image}} class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title text-center">{{aramaurun.sanatEseriBaslik}}</h5>
-                <p class="card-text text-center">{{aramaurun.sanatEseriAciklamasi}}</p>
-            </div>
-            <div class="card-body text-center">
-                <button class="btn btn-warning">Detay'a git</button>
-            </div>
-            <div class="card-footer text-center">
-                <small class="text-body-secondary">{{aramaurun.createdAt}}</small>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-    {% endif %}

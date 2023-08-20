@@ -13,17 +13,16 @@ def index(request):
     urunler = Tasarim.objects.all()
     context['urunler'] = urunler
 
-
     # Arama post geçiliyor
     if request.method == 'POST':
         arama = request.POST.get('search')
         # Post geldiyse ve boş değil ise
-        if arama.__len__:
+        if arama.len():
             searchUrun = Tasarim.objects.filter(sanatEseriBaslik = arama).first()
             context['searchUrunler'] = searchUrun
-    # Buradan sql yollacağız şuan da pass!
-    # Buradan db tarafına işlem yapacağız.
-
+            print("Gelen veri:" ,searchUrun)
+            
+            
     return render(request, 'index.html', context)
 
 
