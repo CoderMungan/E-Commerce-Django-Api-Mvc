@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from .models import Tasarim
 
@@ -17,12 +18,10 @@ def index(request):
     if request.method == 'POST':
         arama = request.POST.get('search')
         # Post geldiyse ve boş değil ise
-        if arama.len():
-            searchUrun = Tasarim.objects.filter(sanatEseriBaslik = arama).first()
+        if arama.__len__():
+            searchUrun = Tasarim.objects.filter(Q(sanatEseriBaslik__icontains = arama)).all()
             context['searchUrunler'] = searchUrun
-            print("Gelen veri:" ,searchUrun)
-            
-            
+
     return render(request, 'index.html', context)
 
 

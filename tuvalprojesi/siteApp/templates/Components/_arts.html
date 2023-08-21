@@ -1,8 +1,31 @@
 <div class="row justify-center mt-5">
-    {% for urun in urunler %}
+
+    {% if searchUrunler%}
+    {% for urunke in searchUrunler %}
     <div class="col-md-4">
         <div class="card">
-            <img src=../../../{{urun.image}} class="card-img-top" alt="...">
+            <img src={{urunke.image}} class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-center">{{urunke.sanatEseriBaslik}}</h5>
+                <p class="card-text text-center">{{urunke.sanatEseriAciklamasi}}</p>
+            </div>
+            <div class="card-body text-center">
+                <button class="btn btn-warning">Detay'a git</button>
+            </div>
+            <div class="card-footer text-center">
+                <small class="text-body-secondary">{{urunke.createdAt}}</small>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    
+    {% if searchUrunler is None %}
+    
+    {% for urun  in  urunler %}
+    <div class="col-md-4">
+        <div class="card">
+            <img src={{urun.image}} class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title text-center">{{urun.sanatEseriBaslik}}</h5>
                 <p class="card-text text-center">{{urun.sanatEseriAciklamasi}}</p>
@@ -16,3 +39,4 @@
         </div>
     </div>
     {% endfor %}
+    {% endif %}
