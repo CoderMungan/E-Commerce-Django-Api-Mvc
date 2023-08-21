@@ -25,3 +25,15 @@ def index(request):
     return render(request, 'index.html', context)
 
 
+def hakkimizda(request):
+
+
+
+    return render(request, "hakkimizda.html")
+
+
+def resimler(request):
+
+    __path__
+
+    return render(request)
