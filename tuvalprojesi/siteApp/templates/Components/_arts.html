@@ -3,8 +3,8 @@
     {% if searchUrunler%}
     {% for urunke in searchUrunler %}
     <div class="col-md-4">
-        <div class="card">
-            <img src=`../../../{{urunke.image}}` class="card-img-top" alt="...">
+        <div class="card mt-5">
+            <img src={{urunke.image}} class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title text-center">{{urunke.sanatEseriBaslik}}</h5>
                 <p class="card-text text-center">{{urunke.sanatEseriAciklamasi}}</p>
@@ -24,7 +24,7 @@
     
     {% for urun  in  urunler %}
     <div class="col-md-4">
-        <div class="card">
+        <div class="card mt-5">
             <img src={{urun.image}} class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title text-center">{{urun.sanatEseriBaslik}}</h5>
@@ -40,3 +40,4 @@
     </div>
     {% endfor %}
     {% endif %}
+</div>
