@@ -32,5 +32,6 @@ urlpatterns = [
     path('' , index, name='home'),
     path('hakkimizda', hakkimizda, name='hakkimda'),
     path('urunlerimiz', urunler, name='urun'),
-    path('iletisim', iletisim, name='iletisim')
+    path('iletisim', iletisim, name='iletisim'),
+    path('urundetay/<urunId>', urundetay, name="urundetay"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

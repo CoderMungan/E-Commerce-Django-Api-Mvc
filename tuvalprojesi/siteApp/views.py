@@ -51,3 +51,14 @@ def iletisim(request):
 
 
     return render(request, "iletisim.html")
+
+
+def urundetay(request, urunId):
+
+    urunDetay = {}
+
+    dbFilter = Tasarim.objects.filter(id = urunId).first()
+
+    urunDetay['urunDetayi'] = dbFilter
+
+    return render(request, "urundetay.html" , urunDetay)
