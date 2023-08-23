@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from .models import Tasarim
+from .models import Tasarim, Hakkimizda
 
 # djangonun user modelini dahil et
 from django.contrib.auth.models import User
@@ -29,7 +29,7 @@ def hakkimizda(request):
 
     icerik = {}
 
-    db = Tasarim.objects.all()
+    db = Hakkimizda.objects.all()
 
     icerik['hakkimizdaVeri'] = db
 
@@ -37,6 +37,5 @@ def hakkimizda(request):
 
 
 def urunler(request):
-
 
     return render(request, "urunler.html")

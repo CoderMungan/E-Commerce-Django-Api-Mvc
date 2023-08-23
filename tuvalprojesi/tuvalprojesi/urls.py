@@ -31,5 +31,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('' , index, name='home'),
     path('hakkimizda', hakkimizda, name='hakkimda'),
-    path('urunlerimiz', urunler, name='urunlerimiz'),
+    path('urunlerimiz', urunler, name='urun'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
