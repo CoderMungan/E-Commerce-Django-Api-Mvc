@@ -16,3 +16,14 @@ class Tasarim(models.Model):
 
     def __str__(self) -> str:
         return self.sanatEseriBaslik
+    
+
+class Hakkimizda(models.Model):
+
+    hakkimizdaBaslik = models.CharField(("Başlık"), max_length=50)
+    hakkimizdaIcerik = models.TextField(("İçerik"), max_length=600)
+
+
+    def __str__(self) -> str:
+        return self.hakkimizdaBaslik
+

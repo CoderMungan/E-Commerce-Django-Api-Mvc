@@ -27,13 +27,16 @@ def index(request):
 
 def hakkimizda(request):
 
+    icerik = {}
+
+    db = Tasarim.objects.all()
+
+    icerik['hakkimizdaVeri'] = db
+
+    return render(request, "hakkimizda.html", icerik)
 
 
-    return render(request, "hakkimizda.html")
+def urunler(request):
 
 
-def resimler(request):
-
-    __path__
-
-    return render(request)
+    return render(request, "urunler.html")
