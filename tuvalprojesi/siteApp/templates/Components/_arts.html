@@ -23,13 +23,16 @@
 
     {% if searchUrunler is None %}
 
-    {% for urun  in  urunler %}
+    {% for urun in urunler %}
     <div class="col-md-4">
         <div class="card mt-5">
             <img src={{urun.image}} class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title text-center">{{urun.sanatEseriBaslik}}</h5>
                 <p style="overflow: hidden;" class="card-text text-center">{{urun.sanatEseriAciklamasi}}</p>
+            </div>
+            <div class="card-body text-center">
+                <p>{{urun.fiyat}}₺</p>
             </div>
             <div class="card-body text-center">
                 <button class="btn btn-warning">Detay'a git</button>

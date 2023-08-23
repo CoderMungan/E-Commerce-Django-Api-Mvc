@@ -45,3 +45,9 @@ def urunler(request):
     context['urunler'] = urunler
 
     return render(request, "urunler.html", context)
+
+
+def iletisim(request):
+
+
+    return render(request, "iletisim.html")

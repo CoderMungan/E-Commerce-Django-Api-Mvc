@@ -32,4 +32,5 @@ urlpatterns = [
     path('' , index, name='home'),
     path('hakkimizda', hakkimizda, name='hakkimda'),
     path('urunlerimiz', urunler, name='urun'),
+    path('iletisim', iletisim, name='iletisim')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

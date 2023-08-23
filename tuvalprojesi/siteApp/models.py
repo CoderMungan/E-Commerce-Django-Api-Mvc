@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class Tasarim(models.Model):
 
     image = models.ImageField(("Resim Dosya"), upload_to="siteApp/Uploads", height_field=None, width_field=None, max_length=None)
+    fiyat = models.IntegerField(("Fiyat"), blank=True)
     sanatci = models.ForeignKey(User, verbose_name=("Sanatci"), on_delete=models.CASCADE)
     sanatEseriBaslik = models.CharField(("Sanat Eseri Başlığı"), max_length=500)
     sanatEseriAciklamasi = models.TextField(("Sanat Eseri İçeriği"), max_length=500)
