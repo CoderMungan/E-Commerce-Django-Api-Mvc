@@ -1,15 +1,14 @@
 <div class="row justify-center mt-5">
     {% if searchUrunler%}
     {% for urunke in searchUrunler %}
-    <div class="aramacard col-md-4">
+    <div class="col-md-4">
         <div class="card mt-5 ">
             <img src={{urunke.image}} class="card-img-top" alt="...">
-            <div class="card-body"  style="min-height: 300px; max-height: 700px;">
+            <div class="card-body">
                 <h5 class="card-title text-center">{{urunke.sanatEseriBaslik}}</h5>
-                <p style="max-height: 6em; overflow: hidden;" class="card-text  text-center">{{urunke.sanatEseriAciklamasi}}
-
+                <p style="overflow: hidden;" class="card-text text-center">
+                    {{urunke.sanatEseriAciklamasi}}
                 </p>
-
             </div>
             <div class="card-body text-center">
                 <button class="btn btn-warning">Detay'a git</button>
@@ -25,12 +24,12 @@
     {% if searchUrunler is None %}
 
     {% for urun  in  urunler %}
-    <div class="cardım col-md-4">
+    <div class="col-md-4">
         <div class="card mt-5">
             <img src={{urun.image}} class="card-img-top" alt="...">
-            <div class="card-body " style="max-height: 700px; min-height: 300px;">
+            <div class="card-body">
                 <h5 class="card-title text-center">{{urun.sanatEseriBaslik}}</h5>
-                <p style="max-height: 6em; overflow: hidden;" class="card-text  text-center">{{urun.sanatEseriAciklamasi}}</p>
+                <p style="overflow: hidden;" class="card-text text-center">{{urun.sanatEseriAciklamasi}}</p>
             </div>
             <div class="card-body text-center">
                 <button class="btn btn-warning">Detay'a git</button>

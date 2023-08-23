@@ -38,4 +38,10 @@ def hakkimizda(request):
 
 def urunler(request):
 
-    return render(request, "urunler.html")
+    context = {}
+
+    urunler = Tasarim.objects.all()
+    
+    context['urunler'] = urunler
+
+    return render(request, "urunler.html", context)
