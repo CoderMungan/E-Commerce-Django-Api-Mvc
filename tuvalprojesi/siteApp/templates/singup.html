@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block site-title %}
+Kayıt Ol
+{% endblock site-title %}
+
+{% block site-icerik %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form class="mt-5" id="kayit-form" action="{% url 'singup' %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Adresiniz</label>
+                <input type="email" class="form-control" id="email" name="k-email">
+            </div>
+            <div class="mb-3">
+                <label for="kullanici" class="form-label">Kullanıcı Adınız</label>
+                <input type="text" class="form-control" id="kullanici" name="k-kullanici">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Şifreniz</label>
+                <input type="password" class="form-control" id="password" name="k-sifre">
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Şifrenizi Tekrar Giriniz</label>
+                <input type="password" class="form-control" id="confirmPassword" name="k-onay-sifre">
+                <p id="matchout" class="form-text text-danger"></p>
+            </div>
+            <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+        </form>
+    </div>
+</div>
+{% endblock site-icerik %}

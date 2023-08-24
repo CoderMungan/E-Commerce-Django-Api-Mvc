@@ -4,7 +4,7 @@ from .models import Tasarim, Hakkimizda, Iletisim
 
 # djangonun user modelini dahil et
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login as auth_login, logout 
 
 
 # Create your views here.
@@ -71,3 +71,57 @@ def urundetay(request, urunId):
     urunDetay['urunDetayi'] = dbFilter
 
     return render(request, "urundetay.html" , urunDetay)
+
+
+def login(request):
+
+    if request.method == "POST":
+
+        kullaniciAdi = request.POST.get('k-username')
+        kullaniciSifre = request.POST.get('k-sifre')
+
+        if kullaniciAdi and kullaniciSifre:
+            user = authenticate(request, username = kullaniciAdi, password = kullaniciSifre)
+
+            if user is not None:
+                auth_login(request, user)
+                return redirect("home")
+            
+            else:
+                return redirect('login')
+            
+        else:
+            return redirect('login')
+            
+
+    return render(request, "login.html")
+
+
+def singup(request):
+
+    if request.method == "POST":
+
+        kullaniciAdi = request.POST.get("k-kullanici")
+        kullaniciSifre = request.POST.get("k-sifre")
+        kullaniciEmail = request.POST.get("k-email")
+
+        if kullaniciSifre and kullaniciAdi and kullaniciEmail:
+            kayitliMi = User.objects.filter(username = kullaniciAdi).first()
+
+            if kayitliMi:
+                return redirect('singup')
+            else:
+                User.objects.create_user(username = kullaniciAdi, password = kullaniciSifre, email = kullaniciEmail)
+                return redirect('login')
+        else:
+            return redirect('singup')
+
+    return render(request, "singup.html")
+
+
+
+def cikis(request):
+
+    logout(request)
+    
+    return redirect('home')

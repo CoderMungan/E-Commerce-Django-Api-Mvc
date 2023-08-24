@@ -22,12 +22,19 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-user"></i>{% if request.user.is_authenticated %}
+                      {{request.user.username}}
+                    {% endif %}
                 </a>
+                {% if request.user.is_authenticated %}
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Giriş Yap</a></li>
-                  <li><a class="dropdown-item" href="#">Kayıt Ol</a></li>
-                  <li><a class="dropdown-item" href="#">Boş Kalsın Şimdilik</a></li>
+                  <li><a class="dropdown-item" href="#">Profil</a></li>
+                  <li><a class="dropdown-item" href="{% url 'logout' %}">Çıkış Yap</a></li>
+                </ul>
+                {% endif %}
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'login' %}">Giriş Yap</a></li>
+                  <li><a class="dropdown-item" href="{% url 'singup' %}">Kayıt Ol</a></li>
                 </ul>
               </li>
         </ul>

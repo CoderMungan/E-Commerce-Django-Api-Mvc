@@ -34,4 +34,7 @@ urlpatterns = [
     path('urunlerimiz', urunler, name='urun'),
     path('iletisim', iletisim, name='iletisim'),
     path('urundetay/<urunId>', urundetay, name="urundetay"),
+    path('login', login, name="login"),
+    path('singup', singup, name="singup"),
+    path('logout', cikis, name="logout")
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

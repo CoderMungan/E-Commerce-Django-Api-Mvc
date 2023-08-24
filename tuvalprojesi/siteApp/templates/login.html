@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block site-title %}
+Giriş Yap
+{% endblock site-title %}
+
+{% block site-icerik %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form class="mt-5" id="kayit-form" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="kullanici" class="form-label">Kullanıcı Adınız</label>
+                <input type="text" class="form-control" id="kullanici" name="k-username">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Şifreniz</label>
+                <input type="password" class="form-control" id="password" name="k-sifre">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="checkbox">
+                <label class="form-check-label" for="checkbox">Beni Unutma</label>
+            </div>
+            <button type="submit" class="btn btn-primary" id="girisButton">Giriş Yap</button>
+            
+        </form>
+    </div>
+</div>
+{% endblock site-icerik %}
