@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from .models import Tasarim, Hakkimizda
+from .models import Tasarim, Hakkimizda, Iletisim
 
 # djangonun user modelini dahil et
 from django.contrib.auth.models import User
@@ -19,7 +19,7 @@ def index(request):
         arama = request.POST.get('search')
         # Post geldiyse ve boş değil ise
         if arama.__len__():
-            searchUrun = Tasarim.objects.filter(Q(sanatEseriBaslik__icontains = arama)).all()
+            searchUrun = Tasarim.objects.filter(Q(sanatEseriBaslik__icontains = arama)).all()   
             context['searchUrunler'] = searchUrun
 
     return render(request, 'index.html', context)
@@ -49,8 +49,17 @@ def urunler(request):
 
 def iletisim(request):
 
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
 
-    return render(request, "iletisim.html")
+        Iletisim.objects.create(name = name, email = email, mesajKonusu = subject, mesajinIcerigi = message)
+
+        return redirect('home')
+    else:
+        return render(request, "iletisim.html")
 
 
 def urundetay(request, urunId):

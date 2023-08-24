@@ -24,4 +24,15 @@ class Hakkimizda(models.Model):
 
     def __str__(self) -> str:
         return self.hakkimizdaBaslik
+    
+
+class Iletisim(models.Model):
+
+    name = models.CharField(("İsmi"), max_length=50)
+    email = models.CharField(("Email Adresi"), max_length=150)
+    mesajKonusu = models.CharField(("Mesajın Konusu"), max_length=200)
+    mesajinIcerigi = models.TextField(("Mesajın İçeriği"), max_length=500)
+
+    def __str__(self) -> str:
+        return self.mesajKonusu
 
