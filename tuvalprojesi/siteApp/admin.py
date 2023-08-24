@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(Tasarim)
 admin.site.register(Hakkimizda)
 admin.site.register(Iletisim)
+admin.site.register(YorumYap)

@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from .models import Tasarim, Hakkimizda, Iletisim
+from .models import Tasarim, Hakkimizda, Iletisim, YorumYap
 
 # djangonun user modelini dahil et
 from django.contrib.auth.models import User
