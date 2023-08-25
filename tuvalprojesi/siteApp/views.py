@@ -71,10 +71,9 @@ def urundetay(request, urunId):
     urunDetay['urunDetayi'] = dbFilter
 
     if request.method == "POST":
-        yorumKullanici = request.POST.get('yorumyapanKisi')
         yorumBaslik = request.POST.get('yorumBaslik')
         yorumIcerik = request.POST.get('yorumIcerik')
-        YorumYap.objects.create(urun = dbFilter, yorumSahibi = request.user , yorumyapanKisi = yorumKullanici, yorumBaslik = yorumBaslik, yorumIcerik = yorumIcerik)
+        YorumYap.objects.create(urun = dbFilter, yorumSahibi = request.user, yorumBaslik = yorumBaslik, yorumIcerik = yorumIcerik)
         return redirect('urundetay', urunId)
 
     urunveyorum = YorumYap.objects.filter(urun__id = urunId).all()
