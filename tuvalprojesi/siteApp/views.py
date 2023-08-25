@@ -70,6 +70,16 @@ def urundetay(request, urunId):
 
     urunDetay['urunDetayi'] = dbFilter
 
+    if request.method == "POST":
+        yorumKullanici = request.POST.get('yorumyapanKisi')
+        yorumBaslik = request.POST.get('yorumBaslik')
+        yorumIcerik = request.POST.get('yorumIcerik')
+        YorumYap.objects.create(yorumyapanKisi = yorumKullanici, yorumBaslik = yorumBaslik, yorumIcerik = yorumIcerik)
+    
+    
+    yorumlariGoster = YorumYap.objects.all()
+    urunDetay['yorumlar'] = yorumlariGoster
+
     return render(request, "urundetay.html" , urunDetay)
 
 

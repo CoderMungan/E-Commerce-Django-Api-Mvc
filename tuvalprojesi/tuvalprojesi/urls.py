@@ -29,7 +29,7 @@ from siteApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('' , index, name='home'),
+    path('' , index , name='home'),
     path('hakkimizda', hakkimizda, name='hakkimda'),
     path('urunlerimiz', urunler, name='urun'),
     path('iletisim', iletisim, name='iletisim'),
