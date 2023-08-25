@@ -32,7 +32,9 @@
                 <p style="overflow: hidden;" class="card-text text-center">{{urun.sanatEseriAciklamasi}}</p>
             </div>
             <div class="card-body text-center">
-                <p>{{urun.fiyat}}₺</p>
+                <button class="btn btn-warning p-md-1 my-1 text-decoration-none mb-3 mt-2" role="button">
+                    {{urun.fiyat}}₺
+                </button>
             </div>
             <div class="card-body text-center">
                 <button class="btn btn-warning"><a class="link-underline link-underline-opacity-0 link-body-emphasis" href="{% url 'urundetay' urun.id %}">Detay'a git</a></button>
