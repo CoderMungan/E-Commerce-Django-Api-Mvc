@@ -74,11 +74,12 @@ def urundetay(request, urunId):
         yorumKullanici = request.POST.get('yorumyapanKisi')
         yorumBaslik = request.POST.get('yorumBaslik')
         yorumIcerik = request.POST.get('yorumIcerik')
-        YorumYap.objects.create(yorumyapanKisi = yorumKullanici, yorumBaslik = yorumBaslik, yorumIcerik = yorumIcerik)
-    
-    
-    yorumlariGoster = YorumYap.objects.all()
-    urunDetay['yorumlar'] = yorumlariGoster
+        YorumYap.objects.create(urun = dbFilter, yorumSahibi = request.user , yorumyapanKisi = yorumKullanici, yorumBaslik = yorumBaslik, yorumIcerik = yorumIcerik)
+        return redirect('urundetay', urunId)
+
+    urunveyorum = YorumYap.objects.filter(urun__id = urunId).all()
+    urunDetay["yorumlar"] = urunveyorum
+
 
     return render(request, "urundetay.html" , urunDetay)
 

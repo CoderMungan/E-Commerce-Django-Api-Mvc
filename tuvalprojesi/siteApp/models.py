@@ -40,6 +40,8 @@ class Iletisim(models.Model):
 
 class YorumYap(models.Model):
 
+    urun = models.ForeignKey(Tasarim, verbose_name=("Ürün Adı"), on_delete=models.CASCADE)
+    yorumSahibi = models.ForeignKey(User, verbose_name=("Yorun sahibi"), on_delete=models.CASCADE)
     yorumyapanKisi = models.CharField(("Yorum Sahibi"), max_length=50)
     yorumBaslik = models.CharField(("Yorumun Başlığı"), max_length=100)
     yorumIcerik = models.TextField(("Yorum İçeriği"), max_length=500)
