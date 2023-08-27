@@ -130,6 +130,32 @@ def singup(request):
 
 
 
+
+def yorumSil(request, urunId, yorumId):
+
+    if request.user:
+        silinecek = YorumYap.objects.filter(id = yorumId, yorumSahibi = request.user).first()
+        if silinecek is not None:
+            silinecek.delete()
+            return redirect('urundetay', urunId)
+        elif request.user.is_superuser:
+            silinecekAdmin = YorumYap.objects.filter(id = yorumId).first()
+            silinecekAdmin.delete()
+            return redirect('urundetay', urunId)
+
+    return redirect('404')
+
+
+
+
+
+
+def errorpage(request):
+
+    return render(request, '404.html')
+
+
+
 def cikis(request):
 
     logout(request)

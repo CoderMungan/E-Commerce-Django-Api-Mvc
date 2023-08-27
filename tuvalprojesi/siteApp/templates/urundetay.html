@@ -68,6 +68,10 @@
                         {{yorum.yorumIcerik}}
                         <br>
                         <small class="text-danger mt-2"><span class="text-white">Yorum Sahibi:</span> {{yorum.yorumSahibi}}</small>
+                        <br>
+                        {% if request.user.is_authenticated and yorum.yorumSahibi == request.user or request.user.is_superuser %}
+                        <button class="btn btn-warning"><a href="{% url 'yorumsil' yorum.urun.id yorum.id %}">Yorum Sil</a></button>
+                        {% endif %}
                     </div>
                 </div>
             </div>
