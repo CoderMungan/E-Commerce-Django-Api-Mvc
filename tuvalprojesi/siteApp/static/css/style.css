@@ -77,11 +77,5 @@
 }
 
 .be-comment-text {
-  font-size: 13px;
-  line-height: 18px;
-  color: #7a8192;
-  display: block;
-  background: #f6f6f7;
-  border: 1px solid #edeff2;
-  padding: 15px 20px 20px 20px;
+  font-size: 12px;
 }
