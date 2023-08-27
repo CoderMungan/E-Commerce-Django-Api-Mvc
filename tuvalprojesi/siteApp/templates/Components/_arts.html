@@ -26,7 +26,7 @@
     {% for urun in urunler %}
     <div class="col-md-4">
         <div class="card mt-5">
-            <img src={{urun.image}} class="card-img-top" alt="...">
+            <img src={{urun.image}} class="card-img-top object-fit-cover" height="300px"  alt="...">
             <div class="card-body">
                 <h5 class="card-title text-center">{{urun.sanatEseriBaslik}}</h5>
                 <p style="overflow: hidden;" class="card-text text-center">{{urun.sanatEseriAciklamasi}}</p>

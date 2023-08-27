@@ -146,7 +146,6 @@ def yorumSil(request, urunId, yorumId):
 
 
 
-
 def errorpage(request):
 
     return render(request, '404.html')
