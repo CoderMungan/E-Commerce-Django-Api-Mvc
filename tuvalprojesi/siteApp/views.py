@@ -130,7 +130,6 @@ def singup(request):
 
 
 
-
 def yorumSil(request, urunId, yorumId):
 
     if request.user:
@@ -144,8 +143,6 @@ def yorumSil(request, urunId, yorumId):
             return redirect('urundetay', urunId)
 
     return redirect('404')
-
-
 
 
 

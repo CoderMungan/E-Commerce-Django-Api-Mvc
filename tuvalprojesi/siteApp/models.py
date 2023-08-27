@@ -43,6 +43,8 @@ class YorumYap(models.Model):
     yorumSahibi = models.ForeignKey(User, verbose_name=("Yorun sahibi"), on_delete=models.CASCADE)
     yorumBaslik = models.CharField(("Yorumun Başlığı"), max_length=100)
     yorumIcerik = models.TextField(("Yorum İçeriği"), max_length=500)
+    yorumAtCrated = models.DateTimeField(("Yorumun Yapıldığı Zaman"), auto_now=True)
+
 
     def __str__(self) -> str:
         return self.yorumBaslik

@@ -41,68 +41,84 @@
 </div>
 
 
-<div class="row justify-content-center mt-5">
+<div class="row justify-content-center mt-5 m-0">
     <div class="col-md-5">
         <hr>
     </div>
-        <div class="col-md-2">
-            <p class="text-center">Yorumlar</p>
-        </div>
-        <div class="col-md-5">
-            <hr>
-        </div>
+    <div class="col-md-2">
+        <p class="text-center">Yorumlar</p>
+    </div>
+    <div class="col-md-5">
+        <hr>
+    </div>
 </div>
-<div class="row mt-5">
-    <div class="col-md-12">
-{% for yorum in yorumlar %}
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        {{yorum.yorumBaslik}}
-                    </button>
-                </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+<div class="row justify-content-center m-0">
+    <div class="col-md-6">
+        <div class="be-comment-block">
+            {% for yorum in yorumlar %}
+            <h1 class="comments-title">{{yorum.yorumBaslik}}</h1>
+            <div class="be-comment">
+                <div class="be-img-comment">
+                    <a href="#">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                    </a>
+                </div>
+                <div class="be-comment-content">
+                    <span class="be-comment-name">
+                        <a href="#">{{yorum.yorumSahibi}}</a>
+                    </span>
+                    <span class="be-comment-time">
+                        <i class="fa fa-clock-o"></i>
+                        {{yorum.yorumAtCrated}}
+                    </span>
+                    <p class="be-comment-text">
                         {{yorum.yorumIcerik}}
-                        <br>
-                        <small class="text-danger mt-2"><span class="text-white">Yorum Sahibi:</span> {{yorum.yorumSahibi}}</small>
-                        <br>
-                        {% if request.user.is_authenticated and yorum.yorumSahibi == request.user or request.user.is_superuser %}
-                        <button class="btn btn-warning"><a href="{% url 'yorumsil' yorum.urun.id yorum.id %}">Yorum Sil</a></button>
-                        {% endif %}
-                    </div>
+                    </p>
                 </div>
             </div>
+            <div class="text-center">
+                {% if request.user.is_authenticated and yorum.yorumSahibi == request.user or request.user.is_superuser %}
+                <button class="btn btn-warning">
+                    <a class="link-light text-decoration-none" href="{% url 'yorumsil' yorum.urun.id yorum.id %}">Yorum Sil</a>
+                </button>
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
 </div>
-{% endfor %}
+
+
+
+
+
+
+
+
 
 {% if request.user.is_authenticated %}
-<div class="row justify-content-center mt-5">
+<div class="row justify-content-center mt-5 m-0">
     <div class="col-md-5">
         <hr>
     </div>
-        <div class="col-md-2">
-            <p class="text-center">Yorum Yap</p>
-        </div>
-        <div class="col-md-5">
-            <hr>
-        </div>
+    <div class="col-md-2">
+        <p class="text-center">Yorum Yap</p>
+    </div>
+    <div class="col-md-5">
+        <hr>
+    </div>
 </div>
 {% else %}
-<div class="row justify-content-center mt-5">
+<div class="row justify-content-center mt-5 m-0">
     <div class="col-md-5">
         <hr>
     </div>
-        <div class="col-md-2">
-            <p class="text-center">Yorum Yapmak İçin Lütfen Giriş Yapınız!</p>
-        </div>
-        <div class="col-md-5">
-            <hr>
-        </div>
+    <div class="col-md-2">
+        <p class="text-center">Yorum Yapmak İçin Lütfen Giriş Yapınız!</p>
+    </div>
+    <div class="col-md-5">
+        <hr>
+    </div>
 </div>
 {% endif %}
 
