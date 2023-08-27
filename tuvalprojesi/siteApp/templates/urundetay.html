@@ -52,11 +52,10 @@
         <hr>
     </div>
 </div>
-<div class="row justify-content-center m-0">
+<div class="row justify-content-center mt-5 m-0">
     <div class="col-md-6">
         <div class="be-comment-block">
             {% for yorum in yorumlar %}
-            <h1 class="comments-title">{{yorum.yorumBaslik}}</h1>
             <div class="be-comment">
                 <div class="be-img-comment">
                     <a href="#">
@@ -65,22 +64,27 @@
                 </div>
                 <div class="be-comment-content">
                     <span class="be-comment-name">
-                        <a href="#">{{yorum.yorumSahibi}}</a>
+                        <a class="link-danger" href="#">{{yorum.yorumSahibi}}</a>
                     </span>
                     <span class="be-comment-time">
                         <i class="fa fa-clock-o"></i>
                         {{yorum.yorumAtCrated}}
                     </span>
+                    <h5>
+                        {{yorum.yorumBaslik}}
+                    </h5>
                     <p class="be-comment-text">
                         {{yorum.yorumIcerik}}
                     </p>
                 </div>
             </div>
-            <div class="text-center">
-                {% if request.user.is_authenticated and yorum.yorumSahibi == request.user or request.user.is_superuser %}
-                <button class="btn btn-warning">
-                    <a class="link-light text-decoration-none" href="{% url 'yorumsil' yorum.urun.id yorum.id %}">Yorum Sil</a>
-                </button>
+            {% if request.user.is_authenticated and yorum.yorumSahibi == request.user or request.user.is_superuser %}
+            <div class="text-center m-0">
+                <a class="text-decoration-none m-0" href="{% url 'yorumsil' yorum.urun.id yorum.id %}">
+                    <button class="btn btn-warning text-white m-0">
+                        Yorum Sil
+                    </button>
+                </a>
             </div>
             {% endif %}
             {% endfor %}
@@ -124,7 +128,7 @@
 
 
 {% if request.user.is_authenticated %}
-<div class="row justify-content-center mt-5">
+<div class="row justify-content-center mt-5 m-0">
     <div class="col-md-6">
         <form action="{% url 'urundetay' urunDetayi.id %}" method="post">
             {% csrf_token %}
