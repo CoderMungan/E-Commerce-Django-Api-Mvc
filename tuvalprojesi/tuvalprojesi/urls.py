@@ -37,7 +37,9 @@ urlpatterns = [
     path('urundetay/<urunId>/yorumSil/<yorumId>', yorumSil, name="yorumsil"),
     path('login', login, name="login"),
     path('singup', singup, name="singup"),
+    path('profile/<profileID>', profile , name='profile'),
     path('404', errorpage, name='404'),
+    path("urundetay/<urunDetayiid>/", deleteurun, name="deleteurun"),
     path('logout', cikis, name="logout")
 
     

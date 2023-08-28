@@ -157,3 +157,23 @@ def cikis(request):
     logout(request)
     
     return redirect('home')
+
+
+def profile(request, profileID):
+
+    context = {}
+    
+    userFilter = User.objects.filter(id = profileID).first()
+
+    context['kullanicilar'] = userFilter
+
+    return render(request, 'profile.html', context)
+
+
+def deleteurun(request,urunDetayiid):
+    deleted=Tasarim.objects.filter(id=urunDetayiid).first()
+    if request.user.is_authenticated and request.user.is_superuser:
+        deleted.delete()
+        return redirect('urun')
+    else:
+        return redirect('404')

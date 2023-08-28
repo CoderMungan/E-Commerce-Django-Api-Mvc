@@ -21,6 +21,11 @@
                 <div>
                     <h5 class="card-title font-weight-bold mb-2">{{urunDetayi.sanatEseriBaslik}}</h5>
                 </div>
+                <div>
+                    {% if request.user.is_superuser  %}
+                        <a href="{% url 'deleteurun' urunDetayi.id  %}"><button type="button" class="btn-close" aria-label="Close"></button></a>
+                    {% endif %}
+                </div>
             </div>
             <div class="card-body text-center">
                 <p class="card-text">
@@ -64,7 +69,7 @@
                 </div>
                 <div class="be-comment-content">
                     <span class="be-comment-name">
-                        <a class="link-warning" href="#">{{yorum.yorumSahibi}}</a>
+                        <a class="link-warning" href="{% url 'profile' yorum.yorumSahibi.id %}">{{yorum.yorumSahibi}}</a>
                     </span>
                     <span class="be-comment-time">
                         <i class="fa fa-clock-o"></i>
