@@ -48,3 +48,18 @@ class YorumYap(models.Model):
 
     def __str__(self) -> str:
         return self.yorumBaslik
+    
+class ProfileModel(models.Model):
+
+    profileSahibi = models.ForeignKey(User, verbose_name=("Profil Sahibi"), on_delete=models.CASCADE)
+    profileAvatar = models.ImageField(("Avatar"), upload_to="", height_field=None, width_field=None, max_length=None, blank=True)
+    profileBio = models.TextField(("Biografi"), max_length=500, blank=True)
+    profileLocation = models.CharField(("Konum"), max_length=150, blank=True)
+    profileInstagram = models.CharField(("Instagram"), max_length=150, blank=True)
+    profileTwitter = models.CharField(("Twitter"), max_length=150, blank=True)
+    profileFacebook = models.CharField(("Facebook"), max_length=150, blank=True)
+    profileWebPage = models.CharField(("Web Sayfası"), max_length=150, blank=True)
+
+
+    def __str__(self) -> str:
+        return self.profileSahibi

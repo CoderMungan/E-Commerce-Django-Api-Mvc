@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from .models import Tasarim, Hakkimizda, Iletisim, YorumYap
+from .models import Tasarim, Hakkimizda, Iletisim, YorumYap, ProfileModel
 
 # djangonun user modelini dahil et
 from django.contrib.auth.models import User
@@ -171,6 +171,18 @@ def profile(request, profileID):
 
     context['yorumlar'] = yorumlar
 
+    if request.method == 'POST':
+        resim = request.POST.get('avatar')
+        biografi = request.POST.get('biografi')
+        instagram = request.POST.get('instagram')
+        twitter = request.POST.get('twitter')
+        facebook = request.POST.get('facebook')
+        webpage = request.POST.get('webpage')
+        location = request.POST.get('konum')
+        ProfileModel.objects.create(profileSahibi = request.user, profileAvatar = resim, profileBio = biografi, profileLocation= location, profileInstagram = instagram, profileTwitter = twitter, profileFacebook = facebook, profileWebPage = webpage)
+        return redirect('home')
+    
+    
     return render(request, 'profile.html', context)
 
 

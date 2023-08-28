@@ -14,9 +14,10 @@
             alt="Profile Resmi Bulunamadı" />
         <div class="d-flex justify-content-center">
             <form action="{% url 'profile' user.id %}" method="POST">
+                {% csrf_token %}
                 <div class="mt-5 mb-3">
                     <label for="resimyukle">Avatarınızı Güncelleyin</label>
-                    <input type="file" class="form-control" id="resimyukle">
+                    <input type="file" class="form-control" id="resimyukle" name="avatar">
                 </div>
                 <fieldset disabled>
                     <div class="mb-3">
@@ -24,17 +25,75 @@
                         <input type="text" id="disabledTextInput" class="form-control" placeholder={{user.username}}>
                     </div>
                 </fieldset>
+                <div class="mb-3">
+                    <label for="social">Sosyal Medyalar</label>
+                    <!-- Social Media Start -->
+                    <div class="row justify-content-between mt-2">
+                        <div class="col-md-1">
+                            <i class="fa-brands fa-instagram fs-4 mt-2"></i>
+                        </div>
+                        <div class="col-md-11">
+                            <input type="text" id="social" class="form-control" placeholder="Instagram"
+                                name="instagram">
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between mt-2">
+                        <div class="col-md-1">
+                            <i class="fa-brands fa-twitter fs-4 mt-2"></i>
+                        </div>
+                        <div class="col-md-11">
+                            <input type="text" id="social" class="form-control" placeholder="Twitter"
+                                name="twitter">
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between mt-2">
+                        <div class="col-md-1">
+                            <i class="fa-brands fa-facebook fs-4 mt-2"></i>
+                        </div>
+                        <div class="col-md-11">
+                            <input type="text" id="social" class="form-control" placeholder="Facebook"
+                                name="facebook">
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between mt-2">
+                        <div class="col-md-1">
+                            <i class="fa-solid fa-earth-americas fs-4 mt-2"></i>
+                        </div>
+                        <div class="col-md-11">
+                            <input type="text" id="social" class="form-control" placeholder="Web Sitesi"
+                                name="webpage">
+                        </div>
+                    </div>
+
+                    <!-- Social Media End -->
+                </div>
+                <hr>
+                <div class="mb-3 mt-3">
+                    <label for="konum">Konum</label>
+                    <div class="row justify-content-between">
+                        <div class="col-md-1">
+                            <i class="fa-solid fa-location-dot fs-4 mt-2"></i>
+                        </div>
+                        <div class="col-md-11">
+                            <input type="text" name="konum" id="konum" class="form-control" placeholder="Istanbul/Europe">
+                        </div>
+                    </div>
+                </div>
                 <hr>
                 <h5 class="text-center mb-3">Şifre Değiştir</h5>
-                    <div class="mb-3">
-                        <input type="password" class="form-control" placeholder='Önceki Şifreniz' name="last-password">
-                    </div>
-                    <div class="mb-3">
-                        <input type="password" class="form-control" placeholder='Yeni Şifreniz' name="new-password">
-                    </div>
-                    <div class="mb-3">
-                        <input type="password" class="form-control" placeholder='Yeni Şifreniz Tekrar' name="new-password-control">
-                    </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" placeholder='Önceki Şifreniz' name="last-password">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" placeholder='Yeni Şifreniz' name="new-password">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" placeholder='Yeni Şifreniz Tekrar'
+                        name="new-password-control">
+                </div>
                 <hr>
                 <div class="mb-3 mt-3">
                     <h5 class="text-center">Biografi</h5>
@@ -59,7 +118,8 @@
                 </div>
                 <div class="be-comment-content">
                     <span class="be-comment-name">
-                        <a class="link-danger" href="{% url 'urundetay' yorum.urun.id %}">{{yorum.urun.sanatEseriBaslik}}</a>
+                        <a class="link-danger"
+                            href="{% url 'urundetay' yorum.urun.id %}">{{yorum.urun.sanatEseriBaslik}}</a>
                     </span>
                     <span class="be-comment-time">
                         <i class="fa fa-clock-o"></i>
