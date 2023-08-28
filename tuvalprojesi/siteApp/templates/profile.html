@@ -13,7 +13,42 @@
         <img class="rounded-circle" src="https://avatars.githubusercontent.com/u/126997544?v=4" width="350px"
             alt="Profile Resmi Bulunamadı" />
         <div class="d-flex justify-content-center">
-            <form action="{% url 'profile' user.id %}" method="POST">
+            <div class="profileShow mt-5 m-0 w-100">
+                {% for profil in profiller %}
+                <h4 class="text-center">{{profil.profileSahibi}}</h5>
+                <div class="row justify-content-center">
+                    <span class="text-center mt-5 mb-3 fs-5">Kullanıcı</span>
+                    <hr>
+                    <div class="col-md-1 me-2">
+                        <i class="fa-solid fa-location-dot fs-3"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <p class="text-center">{{profil.profileLocation}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row justify-content-between mt-2">
+                    <h5 class="text-center mb-3 mt-2">Social</h5>
+                    <!-- Yorum satırı -->
+                    <div class="col-md-3">
+                        <a href='{{profil.profileInstagram}}' target="_blank"><i class="fa-brands fa-instagram fs-3"></i></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href='{{profil.profileFacebook}}' target="_blank"><i class="fa-brands fa-facebook fs-3"></i></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href='{{profil.profileTwitter}}' target="_blank"><i class="fa-brands fa-twitter fs-3"></i></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href='{{profil.profileWebPage}}'  target="_blank"><i class="fa-solid fa-earth-americas fs-3"></i></a>
+                    </div>
+
+            
+                </div>
+                {% endfor %}
+            </div>
+            <!-- Display None Edit Kısmı -->
+            <form action="{% url 'profile' user.id %}" id="profileEdit" method="POST">
                 {% csrf_token %}
                 <div class="mt-5 mb-3">
                     <label for="resimyukle">Avatarınızı Güncelleyin</label>
@@ -43,8 +78,7 @@
                             <i class="fa-brands fa-twitter fs-4 mt-2"></i>
                         </div>
                         <div class="col-md-11">
-                            <input type="text" id="social" class="form-control" placeholder="Twitter"
-                                name="twitter">
+                            <input type="text" id="social" class="form-control" placeholder="Twitter" name="twitter">
                         </div>
                     </div>
 
@@ -53,8 +87,7 @@
                             <i class="fa-brands fa-facebook fs-4 mt-2"></i>
                         </div>
                         <div class="col-md-11">
-                            <input type="text" id="social" class="form-control" placeholder="Facebook"
-                                name="facebook">
+                            <input type="text" id="social" class="form-control" placeholder="Facebook" name="facebook">
                         </div>
                     </div>
 
@@ -63,8 +96,7 @@
                             <i class="fa-solid fa-earth-americas fs-4 mt-2"></i>
                         </div>
                         <div class="col-md-11">
-                            <input type="text" id="social" class="form-control" placeholder="Web Sitesi"
-                                name="webpage">
+                            <input type="text" id="social" class="form-control" placeholder="Web Sitesi" name="webpage">
                         </div>
                     </div>
 
@@ -78,7 +110,8 @@
                             <i class="fa-solid fa-location-dot fs-4 mt-2"></i>
                         </div>
                         <div class="col-md-11">
-                            <input type="text" name="konum" id="konum" class="form-control" placeholder="Istanbul/Europe">
+                            <input type="text" name="konum" id="konum" class="form-control"
+                                placeholder="Istanbul/Europe">
                         </div>
                     </div>
                 </div>

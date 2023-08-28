@@ -171,6 +171,10 @@ def profile(request, profileID):
 
     context['yorumlar'] = yorumlar
 
+    profileFront = ProfileModel.objects.filter(profileSahibi__id = profileID).all()
+
+    context['profiller'] = profileFront
+
     if request.method == 'POST':
         resim = request.POST.get('avatar')
         biografi = request.POST.get('biografi')
@@ -180,7 +184,7 @@ def profile(request, profileID):
         webpage = request.POST.get('webpage')
         location = request.POST.get('konum')
         ProfileModel.objects.create(profileSahibi = request.user, profileAvatar = resim, profileBio = biografi, profileLocation= location, profileInstagram = instagram, profileTwitter = twitter, profileFacebook = facebook, profileWebPage = webpage)
-        return redirect('home')
+        return redirect('profile', profileID)
     
     
     return render(request, 'profile.html', context)

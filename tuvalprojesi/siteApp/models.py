@@ -62,4 +62,4 @@ class ProfileModel(models.Model):
 
 
     def __str__(self) -> str:
-        return self.profileSahibi
+        return self.profileBio
