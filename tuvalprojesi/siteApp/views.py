@@ -162,18 +162,26 @@ def cikis(request):
 def profile(request, profileID):
 
     context = {}
-    
-    userFilter = User.objects.filter(id = profileID).first()
 
+    userFilter = User.objects.filter(id = profileID).first()
+    
     context['kullanicilar'] = userFilter
+
+    yorumlar = YorumYap.objects.filter(yorumSahibi__id = profileID).all()
+
+    context['yorumlar'] = yorumlar
 
     return render(request, 'profile.html', context)
 
 
 def deleteurun(request,urunDetayiid):
+
     deleted=Tasarim.objects.filter(id=urunDetayiid).first()
+
     if request.user.is_authenticated and request.user.is_superuser:
+
         deleted.delete()
         return redirect('urun')
+    
     else:
         return redirect('404')

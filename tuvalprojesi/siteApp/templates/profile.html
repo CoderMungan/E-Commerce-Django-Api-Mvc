@@ -2,16 +2,90 @@
 
 
 {% for user in kullanicilar %}
-    {% block site-title %}
-      {{user.username}} Profil Sayfasi
-    {% endblock site-title %}
+{% block site-title %}
+{{user.username}} Profil Sayfasi
+{% endblock site-title %}
 
 
-    {% block site-icerik %}
-        <div class="row justify-content-center mt-5 m-0">
-            <div class="col-md-6">
-                <h1>{{user.username}}</h1>
-            </div>
+{% block site-icerik %}
+<div class="row justify-content-around mt-5">
+    <div class="col-md-3">
+        <img class="rounded-circle" src="https://avatars.githubusercontent.com/u/126997544?v=4" width="350px"
+            alt="Profile Resmi Bulunamadı" />
+        <div class="d-flex justify-content-center">
+            <form action="{% url 'profile' user.id %}" method="POST">
+                <div class="mt-5 mb-3">
+                    <label for="resimyukle">Avatarınızı Güncelleyin</label>
+                    <input type="file" class="form-control" id="resimyukle">
+                </div>
+                <fieldset disabled>
+                    <div class="mb-3">
+                        <label for="disabledTextInput" class="mb-2">Kullanıcı Adınız</label>
+                        <input type="text" id="disabledTextInput" class="form-control" placeholder={{user.username}}>
+                    </div>
+                </fieldset>
+                <hr>
+                <h5 class="text-center mb-3">Şifre Değiştir</h5>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder='Önceki Şifreniz' name="last-password">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder='Yeni Şifreniz' name="new-password">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder='Yeni Şifreniz Tekrar' name="new-password-control">
+                    </div>
+                <hr>
+                <div class="mb-3 mt-3">
+                    <h5 class="text-center">Biografi</h5>
+                    <textarea class="rounded-top-3 mt-3" name="biografi" id="biografi" cols="40" rows="10"></textarea>
+                </div>
+                <div class="mb-3 text-center">
+                    <button class="btn btn-success">Gönder</button>
+                </div>
+            </form>
         </div>
-    {% endblock site-icerik %}
+    </div>
+
+    <div class="col-md-6">
+        <h1 class="text-center mb-5">Ürünlere Attığınız Yorumlar</h1>
+        <div class="be-comment-block">
+            {% for yorum in yorumlar %}
+            <div class="be-comment">
+                <div class="be-img-comment">
+                    <a href="#">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                    </a>
+                </div>
+                <div class="be-comment-content">
+                    <span class="be-comment-name">
+                        <a class="link-danger" href="{% url 'urundetay' yorum.urun.id %}">{{yorum.urun.sanatEseriBaslik}}</a>
+                    </span>
+                    <span class="be-comment-time">
+                        <i class="fa fa-clock-o"></i>
+                        {{yorum.yorumAtCrated}}
+                    </span>
+                    <h5>
+                        {{yorum.yorumBaslik}}
+                    </h5>
+                    <p class="be-comment-text">
+                        {{yorum.yorumIcerik}}
+                    </p>
+                    {% if request.user.is_authenticated and yorum.yorumSahibi == request.user or request.user.is_superuser %}
+                    <div class="text-center m-0 mb-5">
+                        <a class="text-decoration-none m-0" href="{% url 'yorumsil' yorum.urun.id yorum.id %}">
+                            <button class="btn btn-warning text-white m-0">
+                                Yorum Sil
+                            </button>
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock site-icerik %}
 {% endfor %}
