@@ -12,40 +12,49 @@
     <div class="col-md-3">
         <img class="rounded-circle" src="https://avatars.githubusercontent.com/u/126997544?v=4" width="350px"
             alt="Profile Resmi Bulunamadı" />
-        <div class="d-flex justify-content-center">
-            <div class="profileShow mt-5 m-0 w-100">
-                {% for profil in profiller %}
-                <h4 class="text-center">{{profil.profileSahibi}}</h5>
-                <div class="row justify-content-center">
-                    <span class="text-center mt-5 mb-3 fs-5">Kullanıcı</span>
+        <div class="profileAlani">
+            <div class="mt-5 m-0 w-100">
+            {% for profil in profiller %}
+            <h4 class="text-center">{{profil.profileSahibi}}</h5>
+                <div class="text-center mt-3">
+                    <button class="btn btn-warning" onclick="editprofile()">Profili Düzelt</button>
+                </div>
+            </div>
+                <div id="profileShow">
+                    <div class="row justify-content-center">
+                        <span class="text-center mt-5 mb-3 fs-5">Kullanıcı</span>
+                        <hr>
+                        <div class="col-md-1 me-2">
+                            <i class="fa-solid fa-location-dot fs-3"></i>
+                        </div>
+                        <div class="col-md-9">
+                            <p class="text-center">{{profil.profileLocation}}</p>
+                        </div>
+                    </div>
                     <hr>
-                    <div class="col-md-1 me-2">
-                        <i class="fa-solid fa-location-dot fs-3"></i>
-                    </div>
-                    <div class="col-md-9">
-                        <p class="text-center">{{profil.profileLocation}}</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="row justify-content-between mt-2">
-                    <h5 class="text-center mb-3 mt-2">Social</h5>
-                    <!-- Yorum satırı -->
-                    <div class="col-md-3">
-                        <a href='{{profil.profileInstagram}}' target="_blank"><i class="fa-brands fa-instagram fs-3"></i></a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href='{{profil.profileFacebook}}' target="_blank"><i class="fa-brands fa-facebook fs-3"></i></a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href='{{profil.profileTwitter}}' target="_blank"><i class="fa-brands fa-twitter fs-3"></i></a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href='{{profil.profileWebPage}}'  target="_blank"><i class="fa-solid fa-earth-americas fs-3"></i></a>
-                    </div>
+                    <div class="row justify-content-between mt-2">
+                        <h5 class="text-center mb-3 mt-2">Social</h5>
+                        <!-- Yorum satırı -->
+                        <div class="col-md-3">
+                            <a href='{{profil.profileInstagram}}' target="_blank"><i
+                                    class="fa-brands fa-instagram fs-3"></i></a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href='{{profil.profileFacebook}}' target="_blank"><i
+                                    class="fa-brands fa-facebook fs-3"></i></a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href='{{profil.profileTwitter}}' target="_blank"><i
+                                    class="fa-brands fa-twitter fs-3"></i></a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href='{{profil.profileWebPage}}' target="_blank"><i
+                                    class="fa-solid fa-earth-americas fs-3"></i></a>
+                        </div>
 
-            
-                </div>
-                {% endfor %}
+
+                    </div>
+                    {% endfor %}
             </div>
             <!-- Display None Edit Kısmı -->
             <form action="{% url 'profile' user.id %}" id="profileEdit" method="POST">
@@ -133,7 +142,7 @@
                     <textarea class="rounded-top-3 mt-3" name="biografi" id="biografi" cols="40" rows="10"></textarea>
                 </div>
                 <div class="mb-3 text-center">
-                    <button class="btn btn-success">Gönder</button>
+                    <button id="formGonder" type="submit" class="btn btn-success">Gönder</button>
                 </div>
             </form>
         </div>
