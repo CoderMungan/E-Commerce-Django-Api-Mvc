@@ -38,7 +38,7 @@
                 </ul>
               </li>
         </ul>
-        <form class="d-flex" role="search" method="post">
+        <form class="d-flex" action="{% url 'search' %}" role="search" method="post">
           <input class="form-control me-2" type="search" placeholder="Arama" aria-label="Search" name="search">
           <button class="btn btn-warning" type="submit">Arama</button>
           {% csrf_token %}

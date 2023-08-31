@@ -15,14 +15,23 @@ def index(request):
     context['urunler'] = urunler
 
     # Arama post geçiliyor
+
+    return render(request, 'index.html', context)
+
+def searchBar(request):
+
+    context = {}
+
     if request.method == 'POST':
         arama = request.POST.get('search')
         # Post geldiyse ve boş değil ise
-        if arama.__len__():
+        print("index fn:", arama)
+        if arama:
             searchUrun = Tasarim.objects.filter(Q(sanatEseriBaslik__icontains = arama)).all()   
             context['searchUrunler'] = searchUrun
-
-    return render(request, 'index.html', context)
+        elif arama == "":
+            return redirect('home')
+    return render(request, 'index.html' ,context)
 
 
 def hakkimizda(request):
