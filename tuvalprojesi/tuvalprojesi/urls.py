@@ -42,6 +42,4 @@ urlpatterns = [
     path("urundetay/<urunDetayiid>/", deleteurun, name="deleteurun"),
     path('arama', searchBar, name="search"),
     path('logout', cikis, name="logout")
-
-    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

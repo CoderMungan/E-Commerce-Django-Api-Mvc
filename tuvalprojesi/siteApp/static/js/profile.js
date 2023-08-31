@@ -1,28 +1,19 @@
-const profile = document.getElementById('profileEdit')
-const profileShow = document.getElementById('profileShow')
+const profilGoster = document.getElementById('profileShow')
+const profilEdit = document.getElementById('profileEdit')
+const editBtn = document.getElementById('editBtn')
 const formGonderBtn = document.getElementById('formGonder')
-const nokta = document.getElementById(nokta)
 
-if(profile){
-    profile.style.display = "none";
+
+if(profilGoster){
+    profilEdit.style.display = "none"
 }
 
-if(nokta.innerHTML == ""){
-    profile.style.display = "block";
-}else {
-    editprofile()
-}
+editBtn.addEventListener("click", function(){
+    profilGoster.style.display="none";
+    profilEdit.style.display ="block";
+})
 
-const editprofile = () => {
-    profileShow.style.display = "none";
-    profile.style.display = "block";
-}
-
-const resetProfile = () => {
-    profileShow.style.display = "block";
-    profile.style.display = "none"
-}
-
-formGonderBtn.addEventListener('submit', function(){
-    resetProfile()
+formGonderBtn.addEventListener("click",function(){
+    profilGoster.style.display = "block";
+    profilEdit.style.display = "none";
 })

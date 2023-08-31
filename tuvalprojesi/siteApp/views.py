@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout 
 
 
+from .form import *
+
 # Create your views here.
 def index(request):
 
@@ -195,6 +197,17 @@ def profile(request, profileID):
         ProfileModel.objects.create(profileSahibi = request.user, profileAvatar = resim, profileBio = biografi, profileLocation= location, profileInstagram = instagram, profileTwitter = twitter, profileFacebook = facebook, profileWebPage = webpage)
         return redirect('profile', profileID)
     
+    # Tüm profilleri al
+
+
+    # Update yapmaya çalışıyorum
+    # profileDetaylari = ProfileModel.objects.filter(profileSahibi = request.user)
+    # updateProfile = {}
+    
+    # for profile in profileDetaylari:
+    #     updateProfile[profile.id] = UpdateProfile(instance = profile)
+    #     context["update"]  = updateProfile.items()
+
     
     return render(request, 'profile.html', context)
 
