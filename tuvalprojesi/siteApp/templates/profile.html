@@ -8,13 +8,14 @@
 
 
 {% block site-icerik %}
+{% for profil in profiller %}
 <div class="row justify-content-around mt-5">
     <div class="col-md-3">
-        <img class="rounded-circle" src="https://avatars.githubusercontent.com/u/126997544?v=4" width="350px"
+        <img class="rounded-circle" src={{profil.profileAvatar.url}} width="350px"
             alt="Profile Resmi Bulunamadı" />
         <div class="profileAlani">
             <div class="mt-5 m-0 w-100">
-            {% for profil in profiller %}
+           
             <h4 class="text-center">{{profil.profileSahibi}}</h5>
                 <div class="text-center mt-3">
                     <button class="btn btn-warning" onclick="editprofile()">Profili Düzelt</button>
@@ -149,8 +150,9 @@
     </div>
 
     <div class="col-md-6">
+
         <h1 class="text-center mb-5">Ürünlere Attığınız Yorumlar</h1>
-        <div class="be-comment-block">
+        <hr>
             {% for yorum in yorumlar %}
             <div class="be-comment">
                 <div class="be-img-comment">
