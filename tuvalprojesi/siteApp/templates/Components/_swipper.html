@@ -1,5 +1,27 @@
 <!-- Slider main container -->
-<div class="swiper">
+<div id="carouselExampleAutoplaying" class="carousel slide"  data-bs-ride="carousel">
+  <div class="carousel-inner "  >
+    <div class="carousel-item active">
+      <img  src="https://m.media-amazon.com/images/I/81EiTyAfKOL._AC_UF894,1000_QL80_.jpg" class="rounded" width="100%" height="380"  alt="...">
+    </div>
+    <div class="carousel-item">
+      <img  src="https://m.media-amazon.com/images/I/71c-IUw6ShL._AC_UF1000,1000_QL80_.jpg" class="rounded" width="100%" height="380"  alt="...">
+    </div>
+    <div class="carousel-item">
+      <img  src="https://m.media-amazon.com/images/I/71jjoIbG8dL._AC_UF1000,1000_QL80_.jpg" class="rounded" width="100%" height="380"  alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+{% comment %} <div class="swiper">
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
@@ -23,4 +45,4 @@
 
   <!-- If we need scrollbar -->
   <div class="swiper-scrollbar"></div>
-</div>
+</div> {% endcomment %}

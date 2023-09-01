@@ -7,6 +7,9 @@
 .swiper {
     height: 300px;
 }
+.carousel-inner .carousel-item {
+  transition: transform 2s ease-in-out;
+}
 
 
 .fas.fa-heart:hover {

@@ -20,7 +20,7 @@ class Tasarim(models.Model):
 class Hakkimizda(models.Model):
 
     hakkimizdaBaslik = models.CharField(("Başlık"), max_length=50)
-    hakkimizdaIcerik = models.TextField(("İçerik"), max_length=600)
+    hakkimizdaIcerik = models.TextField(("İçerik"), max_length=2000)
 
     def __str__(self) -> str:
         return self.hakkimizdaBaslik
