@@ -186,27 +186,35 @@ def profile(request, profileID):
 
     context['profiller'] = profileFront
 
-    if request.method == 'POST':
-        resim = request.POST.get('avatar')
-        biografi = request.POST.get('biografi')
-        instagram = request.POST.get('instagram')
-        twitter = request.POST.get('twitter')
-        facebook = request.POST.get('facebook')
-        webpage = request.POST.get('webpage')
-        location = request.POST.get('konum')
-        ProfileModel.objects.create(profileSahibi = request.user, profileAvatar = resim, profileBio = biografi, profileLocation= location, profileInstagram = instagram, profileTwitter = twitter, profileFacebook = facebook, profileWebPage = webpage)
-        return redirect('profile', profileID)
+    # if request.method == 'POST':
+    #     resim = request.POST.get('avatar')
+    #     biografi = request.POST.get('biografi')
+    #     instagram = request.POST.get('instagram')
+    #     twitter = request.POST.get('twitter')
+    #     facebook = request.POST.get('facebook')
+    #     webpage = request.POST.get('webpage')
+    #     location = request.POST.get('konum')
+    #     ProfileModel.objects.create(request.POST,request.FILES)
+    #     return redirect('profile', profileID)
     
     # Tüm profilleri al
 
 
     # Update yapmaya çalışıyorum
     # profileDetaylari = ProfileModel.objects.filter(profileSahibi = request.user)
-    # updateProfile = {}
+    updateProfile = {}
+    profileUptade  = ProfileModel.objects.filter(profileSahibi__id = profileID)
     
-    # for profile in profileDetaylari:
-    #     updateProfile[profile.id] = UpdateProfile(instance = profile)
-    #     context["update"]  = updateProfile.items()
+    for profile in profileUptade:
+        updateProfile[profile.id] = UpdateProfile(instance = profile)
+        context["update"]  = updateProfile.items()
+        
+        
+    if request.method == "POST":
+        formGelen = UpdateProfile(request.POST, request.FILES)
+        if formGelen.is_valid():
+            formGelen.save()
+            return redirect('profile',profileID)
 
     
     return render(request, 'profile.html', context)

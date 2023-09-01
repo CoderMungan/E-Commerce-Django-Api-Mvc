@@ -11,7 +11,7 @@ if(profileSahibi.innerHTML == ""){
     form.style.display = "block"
 }else if(profileSahibi){
     form.style.display = "none"
-    profileEditBtn.style.display = "block"
+    profileEditBtn.style.display = "inline"
     profileEkran.style.display = "block"
 }
 
@@ -24,5 +24,5 @@ profileEditBtn.addEventListener('click', function(){
 formbtn.addEventListener("click" ,function (){
     profileEkran.style.display = "block"
     form.style.display = "none"
-    profileEditBtn.style.display = "block"
+    profileEditBtn.style.display = "inline"
 })

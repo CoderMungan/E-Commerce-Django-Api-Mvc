@@ -8,15 +8,19 @@
 
 
 {% block site-icerik %}
-<div class="row justify-content-around">
+<div class="row justify-content-around mt-5">
     <!-- Sol Alan -->
     <div class="col-md-3">
+        <h5 class="text-center mb-5">Profil Detay</h5>
         {% for profile in profiller %}
         <div class="mb-3">
             <img class="rounded-circle" src={{profile.profileAvatar.url}} alt="Resim Bulunamadı" width="350px" />
         </div>
         <div class="mb-3">
             <p id="profileSahip" class="text-center">{{profile.profileSahibi}}</p>
+        </div>
+        <div class="mb-3">
+            <p class="text-center">{{profile.profileBio}}</p>
         </div>
         <div class="mb-3 text-center">
             <button class="btn btn-warning" id="ProfileEdit">Profili Düzenle</button>
@@ -66,58 +70,98 @@
             </div>
             <hr>
         </div>
+        {% for id,form in update %}
         <form action="{% url 'profile' profile.profileSahibi.id %}" method="post" id="formEdit" enctype="multipart/form-data">
             {% csrf_token %}
-            <p class="text-center">Resminizi Seçiniz</p>
-            <div class="mb-3">
-                <input class="form-control" type="file" placeholder="Resim Seç" name="resim"/>
-            </div>
-            <p class="text-center">Sosyal Medyalar</p>
-            <div class="row mb-3">
-                <div class="col-md-3 text-center">
-                    <i class="fa-brands fa-instagram fs-4 mt-2"></i>
+              {{form}}
+            <!-- <p class="text-center">Resminizi Seçiniz</p>
+                <div class="mb-3">
+                    <input class="form-control" type="file" placeholder="Resim Seç" name="resim"/>
                 </div>
-                <div class="col-md-9">
-                    <input class="form-control" type="text" placeholder="Instagram" name="instagram">
+                <p class="text-center">Sosyal Medyalar</p>
+                <div class="row mb-3">
+                    <div class="col-md-3 text-center">
+                        <i class="fa-brands fa-instagram fs-4 mt-2"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" type="text" placeholder="Instagram" name="instagram">
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-3 text-center">
-                    <i class="fa-brands fa-facebook fs-4 mt-2"></i>
+                <div class="row mb-3">
+                    <div class="col-md-3 text-center">
+                        <i class="fa-brands fa-facebook fs-4 mt-2"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" type="text" placeholder="Facebook" name="facebook">
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    <input class="form-control" type="text" placeholder="Facebook" name="facebook">
+                <div class="row mb-3">
+                    <div class="col-md-3 text-center">
+                        <i class="fa-brands fa-twitter fs-4 mt-2"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" type="text" placeholder="Twitter" name="twitter">
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-3 text-center">
-                    <i class="fa-brands fa-twitter fs-4 mt-2"></i>
+                <div class="row mb-3">
+                    <div class="col-md-3 text-center">
+                        <i class="fa-solid fa-earth-americas fs-4 mt-2"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" type="text" placeholder="Web Site" name="website">
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    <input class="form-control" type="text" placeholder="Twitter" name="twitter">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-3 text-center">
-                    <i class="fa-solid fa-earth-americas fs-4 mt-2"></i>
-                </div>
-                <div class="col-md-9">
-                    <input class="form-control" type="text" placeholder="Web Site" name="website">
-                </div>
-            </div>
-            <hr>
-            <p class="text-center">Biografi</p>
-            <textarea name="biografi" id="" cols="40" rows="5"></textarea>
-            <div class="mt-3 text-center">
-                <button class="btn btn-warning" type="submit" id="btnformGonder">Gönder!</button>
-            </div>
-        </form>
-    </div>
+                <hr>
+                <p class="text-center">Biografi</p>
+                <textarea name="biografi" id="" cols="40" rows="5"></textarea>
+                -->
+                <div class="mt-3 text-center">
+                    <button class="btn btn-warning" type="submit" id="btnformGonder">Gönder!</button>
+                </div> 
+            </form>
+            {% endfor %}
+        </div>
 
 
     <!-- Sağ Alan -->
-    <div class="col-md-9">
+    <div class="col-md-6">
+        <h5 class="text-center mb-5">Yorumlarınız</h5>
+        <div class="be-comment-block">
+            {% for yorum in yorumlar %}
+            <div class="be-comment">
+                <div class="be-img-comment">
+                    <a href="#">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                    </a>
+                </div>
+                <div class="be-comment-content">
+                    <span class="be-comment-name">
+                        <a class="link-warning" href="{% url 'profile' yorum.yorumSahibi.id %}">{{yorum.yorumSahibi}}</a>
+                    </span>
+                    <span class="be-comment-time">
+                        <i class="fa fa-clock-o"></i>
+                        {{yorum.yorumAtCrated}}
+                    </span>
+                    <h5>
+                        {{yorum.yorumBaslik}}
+                    </h5>
+                    <p class="be-comment-text">
+                        {{yorum.yorumIcerik}}
+                    </p>
+                    {% if request.user.is_authenticated and yorum.yorumSahibi == request.user or request.user.is_superuser %}
+                    <div class="text-center m-0">
+                        <a class="text-decoration-none m-0" href="{% url 'yorumsil' yorum.urun.id yorum.id %}">
+                            <button class="btn btn-warning text-white m-0">
+                                Yorum Sil
+                            </button>
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
 
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endfor %}
