@@ -170,6 +170,8 @@ def cikis(request):
     return redirect('home')
 
 
+
+
 def profile(request, profileID):
 
     context = {}
@@ -186,35 +188,25 @@ def profile(request, profileID):
 
     context['profiller'] = profileFront
 
-    # if request.method == 'POST':
-    #     resim = request.POST.get('avatar')
-    #     biografi = request.POST.get('biografi')
-    #     instagram = request.POST.get('instagram')
-    #     twitter = request.POST.get('twitter')
-    #     facebook = request.POST.get('facebook')
-    #     webpage = request.POST.get('webpage')
-    #     location = request.POST.get('konum')
-    #     ProfileModel.objects.create(request.POST,request.FILES)
-    #     return redirect('profile', profileID)
-    
-    # Tüm profilleri al
-
 
     # Update yapmaya çalışıyorum
     # profileDetaylari = ProfileModel.objects.filter(profileSahibi = request.user)
     updateProfile = {}
-    profileUptade  = ProfileModel.objects.filter(profileSahibi__id = profileID)
+    profileUptade  = ProfileModel.objects.filter(profileSahibi__id = profileID).first()
     
-    for profile in profileUptade:
+    if request.method == "POST":
+        updateProfile = UpdateProfile(request.POST, request.FILES, instance = profileUptade)
+        if updateProfile.is_valid():
+            updateProfile.save()
+            return redirect('profile',profileID)
+        else:
+            return redirect('404')
+        
+    profileQuerySet  = ProfileModel.objects.filter(profileSahibi__id = profileID)
+
+    for profile in profileQuerySet:
         updateProfile[profile.id] = UpdateProfile(instance = profile)
         context["update"]  = updateProfile.items()
-        
-        
-    if request.method == "POST":
-        formGelen = UpdateProfile(request.POST, request.FILES)
-        if formGelen.is_valid():
-            formGelen.save()
-            return redirect('profile',profileID)
 
     
     return render(request, 'profile.html', context)
