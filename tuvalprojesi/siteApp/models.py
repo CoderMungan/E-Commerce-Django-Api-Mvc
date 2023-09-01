@@ -52,7 +52,7 @@ class YorumYap(models.Model):
 class ProfileModel(models.Model):
 
     profileSahibi = models.ForeignKey(User, verbose_name=("Profil Sahibi"), on_delete=models.CASCADE)
-    profileAvatar = models.ImageField(("Avatar"), upload_to="", height_field=None, width_field=None, max_length=None, blank=True)
+    profileAvatar = models.ImageField(("Avatar"), upload_to="", height_field=None, default="/Uploads/Avatar.png", width_field=None, max_length=None, blank=True)
     profileBio = models.TextField(("Biografi"), max_length=500, blank=True)
     profileLocation = models.CharField(("Konum"), max_length=150, blank=True)
     profileInstagram = models.CharField(("Instagram"), max_length=150, blank=True)

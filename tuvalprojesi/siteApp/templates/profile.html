@@ -8,187 +8,118 @@
 
 
 {% block site-icerik %}
-{% for profil in profiller %}
-<div class="row justify-content-around mt-5">
+<div class="row justify-content-around">
+    <!-- Sol Alan -->
     <div class="col-md-3">
-        <img class="rounded-circle" src={{profil.profileAvatar.url}} width="350px"
-            alt="Profile Resmi Bulunamadı" />
-        <div class="profileAlani">
-            <div class="mt-5 m-0 w-100">
-            <h4 class="text-center">{{profil.profileSahibi}}</h5>
-                <div class="text-center mt-3">
-                    <button id="profileShow" class="btn btn-warning">Profili Düzelt</button>
-                </div>
-            </div>
-                <div id="profileShow">
-                    <div class="row justify-content-center">
-                        <span class="text-center mt-5 mb-3 fs-5">Kullanıcı</span>
-                        <hr>
-                        <div class="col-md-1 me-2">
-                            <i class="fa-solid fa-location-dot fs-3"></i>
-                        </div>
-                        <div class="col-md-9">
-                            <p id="nokta" class="text-center">{{profil.profileLocation}}</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row justify-content-between mt-2">
-                        <h5 class="text-center mb-3 mt-2">Social</h5>
-                        <!-- Yorum satırı -->
-                        <div class="col-md-3">
-                            <a href='{{profil.profileInstagram}}' target="_blank"><i
-                                    class="fa-brands fa-instagram fs-3"></i></a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href='{{profil.profileFacebook}}' target="_blank"><i
-                                    class="fa-brands fa-facebook fs-3"></i></a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href='{{profil.profileTwitter}}' target="_blank"><i
-                                    class="fa-brands fa-twitter fs-3"></i></a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href='{{profil.profileWebPage}}' target="_blank"><i
-                                    class="fa-solid fa-earth-americas fs-3"></i></a>
-                        </div>
-
-
-                    </div>
-                    {% endfor %}
-            </div>
-            <!-- Display None Edit Kısmı -->
-            <form action="{% url 'profile' user.id %}" id="profileEdit" method="POST">
-                {% csrf_token %}
-                <div class="mt-5 mb-3">
-                    <label for="resimyukle">Avatarınızı Güncelleyin</label>
-                    <input type="file" class="form-control" id="resimyukle" name="avatar">
-                </div>
-                <fieldset disabled>
-                    <div class="mb-3">
-                        <label for="disabledTextInput" class="mb-2">Kullanıcı Adınız</label>
-                        <input type="text" id="disabledTextInput" class="form-control" placeholder={{user.username}}>
-                    </div>
-                </fieldset>
-                <div class="mb-3">
-                    <label for="social">Sosyal Medyalar</label>
-                    <!-- Social Media Start -->
-                    <div class="row justify-content-between mt-2">
-                        <div class="col-md-1">
-                            <i class="fa-brands fa-instagram fs-4 mt-2"></i>
-                        </div>
-                        <div class="col-md-11">
-                            <input type="text" id="social" class="form-control" placeholder="Instagram"
-                                name="instagram">
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                        <div class="col-md-1">
-                            <i class="fa-brands fa-twitter fs-4 mt-2"></i>
-                        </div>
-                        <div class="col-md-11">
-                            <input type="text" id="social" class="form-control" placeholder="Twitter" name="twitter">
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                        <div class="col-md-1">
-                            <i class="fa-brands fa-facebook fs-4 mt-2"></i>
-                        </div>
-                        <div class="col-md-11">
-                            <input type="text" id="social" class="form-control" placeholder="Facebook" name="facebook">
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                        <div class="col-md-1">
-                            <i class="fa-solid fa-earth-americas fs-4 mt-2"></i>
-                        </div>
-                        <div class="col-md-11">
-                            <input type="text" id="social" class="form-control" placeholder="Web Sitesi" name="webpage">
-                        </div>
-                    </div>
-
-                    <!-- Social Media End -->
-                </div>
-                <hr>
-                <div class="mb-3 mt-3">
-                    <label for="konum">Konum</label>
-                    <div class="row justify-content-between">
-                        <div class="col-md-1">
-                            <i class="fa-solid fa-location-dot fs-4 mt-2"></i>
-                        </div>
-                        <div class="col-md-11">
-                            <input type="text" name="konum" id="konum" class="form-control"
-                                placeholder="Istanbul/Europe">
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <h5 class="text-center mb-3">Şifre Değiştir</h5>
-                <div class="mb-3">
-                    <input type="password" class="form-control" placeholder='Önceki Şifreniz' name="last-password">
-                </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control" placeholder='Yeni Şifreniz' name="new-password">
-                </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control" placeholder='Yeni Şifreniz Tekrar'
-                        name="new-password-control">
-                </div>
-                <hr>
-                <div class="mb-3 mt-3">
-                    <h5 class="text-center">Biografi</h5>
-                    <textarea class="rounded-top-3 mt-3" name="biografi" id="biografi" cols="40" rows="10"></textarea>
-                </div>
-                <div class="mb-3 text-center">
-                    <button id="formGonder" type="submit" class="btn btn-success">Gönder</button>
-                </div>
-            </form>
+        {% for profile in profiller %}
+        <div class="mb-3">
+            <img class="rounded-circle" src={{profile.profileAvatar.url}} alt="Resim Bulunamadı" width="350px" />
         </div>
+        <div class="mb-3">
+            <p id="profileSahip" class="text-center">{{profile.profileSahibi}}</p>
+        </div>
+        <div class="mb-3 text-center">
+            <button class="btn btn-warning" id="ProfileEdit">Profili Düzenle</button>
+        </div>
+        <div id="profileShow">
+            <hr>
+            <div class="row justify-content-center">
+                <div class="col-md-1">
+                    <i class="fa-solid fa-location-arrow"></i>
+                </div>
+                <div class="col-md-10">
+                    <p class="text-center">{{profile.profileLocation}}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row justify-content-center">
+                <div class="col-md-1">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="col-md-10">
+                    <a href="https://instagram.com/{{profile.profileInstagram}}" target="_blank" class="text-decoration-none link-light link-opacity-50-hover"><p class="text-center">{{profile.profileInstagram}}</p></a>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-1">
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+                <div class="col-md-10">
+                    <a href="https://facebook.com/{{profile.profileFacebook}}" target="_blank" class="text-decoration-none link-light link-opacity-50-hover"><p class="text-center">{{profile.profileFacebook}}</p></a>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-1">
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+                <div class="col-md-10">
+                    <a href="https://twitter.com/{{profile.profileTwitter}}" target="_blank" class="text-decoration-none link-light link-opacity-50-hover"><p class="text-center">{{profile.profileTwitter}}</p></a>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-1">
+                    <i class="fa-solid fa-earth-americas"></i>
+                </div>
+                <div class="col-md-10">
+                    <a href="{{profile.profileWebSite}}" target="_blank" class="text-decoration-none link-light link-opacity-50-hover"><p class="text-center">{{profile.profileWebSite}}</p></a>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <form action="{% url 'profile' profile.profileSahibi.id %}" method="post" id="formEdit" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p class="text-center">Resminizi Seçiniz</p>
+            <div class="mb-3">
+                <input class="form-control" type="file" placeholder="Resim Seç" name="resim"/>
+            </div>
+            <p class="text-center">Sosyal Medyalar</p>
+            <div class="row mb-3">
+                <div class="col-md-3 text-center">
+                    <i class="fa-brands fa-instagram fs-4 mt-2"></i>
+                </div>
+                <div class="col-md-9">
+                    <input class="form-control" type="text" placeholder="Instagram" name="instagram">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-3 text-center">
+                    <i class="fa-brands fa-facebook fs-4 mt-2"></i>
+                </div>
+                <div class="col-md-9">
+                    <input class="form-control" type="text" placeholder="Facebook" name="facebook">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-3 text-center">
+                    <i class="fa-brands fa-twitter fs-4 mt-2"></i>
+                </div>
+                <div class="col-md-9">
+                    <input class="form-control" type="text" placeholder="Twitter" name="twitter">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-3 text-center">
+                    <i class="fa-solid fa-earth-americas fs-4 mt-2"></i>
+                </div>
+                <div class="col-md-9">
+                    <input class="form-control" type="text" placeholder="Web Site" name="website">
+                </div>
+            </div>
+            <hr>
+            <p class="text-center">Biografi</p>
+            <textarea name="biografi" id="" cols="40" rows="5"></textarea>
+            <div class="mt-3 text-center">
+                <button class="btn btn-warning" type="submit" id="btnformGonder">Gönder!</button>
+            </div>
+        </form>
     </div>
 
-    <div class="col-md-6">
 
-        <h1 class="text-center mb-5">Ürünlere Attığınız Yorumlar</h1>
-        <hr>
-            {% for yorum in yorumlar %}
-            <div class="be-comment">
-                <div class="be-img-comment">
-                    <a href="#">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
-                    </a>
-                </div>
-                <div class="be-comment-content">
-                    <span class="be-comment-name">
-                        <a class="link-danger"
-                            href="{% url 'urundetay' yorum.urun.id %}">{{yorum.urun.sanatEseriBaslik}}</a>
-                    </span>
-                    <span class="be-comment-time">
-                        <i class="fa fa-clock-o"></i>
-                        {{yorum.yorumAtCrated}}
-                    </span>
-                    <h5>
-                        {{yorum.yorumBaslik}}
-                    </h5>
-                    <p class="be-comment-text">
-                        {{yorum.yorumIcerik}}
-                    </p>
-                    {% if request.user.is_authenticated and yorum.yorumSahibi == request.user or request.user.is_superuser %}
-                    <div class="text-center m-0 mb-5">
-                        <a class="text-decoration-none m-0" href="{% url 'yorumsil' yorum.urun.id yorum.id %}">
-                            <button class="btn btn-warning text-white m-0">
-                                Yorum Sil
-                            </button>
-                        </a>
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
+    <!-- Sağ Alan -->
+    <div class="col-md-9">
 
-            {% endfor %}
-        </div>
     </div>
 </div>
+{% endfor %}
 {% endblock site-icerik %}
 {% endfor %}

@@ -1,19 +1,28 @@
-const profilGoster = document.getElementById('profileShow')
-const profilEdit = document.getElementById('profileEdit')
-const editBtn = document.getElementById('editBtn')
-const formGonderBtn = document.getElementById('formGonder')
+const profileSahibi = document.getElementById('profileSahip')
+const profileEditBtn = document.getElementById('ProfileEdit')
+const profileEkran = document.getElementById('profileShow')
+const form = document.getElementById('formEdit')
+const formbtn = document.getElementById('btnformGonder')
 
 
-if(profilGoster){
-    profilEdit.style.display = "none"
+if(profileSahibi.innerHTML == ""){
+    profileEditBtn.style.display = "none"
+    profileEkran.style.display = "none"
+    form.style.display = "block"
+}else if(profileSahibi){
+    form.style.display = "none"
+    profileEditBtn.style.display = "block"
+    profileEkran.style.display = "block"
 }
 
-editBtn.addEventListener("click", function(){
-    profilGoster.style.display="none";
-    profilEdit.style.display ="block";
+profileEditBtn.addEventListener('click', function(){
+    profileEkran.style.display = "none"
+    form.style.display = "block"
+    profileEditBtn.style.display = "none"
 })
 
-formGonderBtn.addEventListener("click",function(){
-    profilGoster.style.display = "block";
-    profilEdit.style.display = "none";
+formbtn.addEventListener("click" ,function (){
+    profileEkran.style.display = "block"
+    form.style.display = "none"
+    profileEditBtn.style.display = "block"
 })
