@@ -21,7 +21,12 @@ Giriş Yap
                 <input type="checkbox" class="form-check-input" id="checkbox">
                 <label class="form-check-label" for="checkbox">Beni Unutma</label>
             </div>
-            <button type="submit" class="btn btn-primary" id="girisButton">Giriş Yap</button>
+            <div class="mb-3">
+                <p class="text-center">Eğer ki daha hesabınız yoksa <a href="{% url 'singup' %}">buradan</a> kayıt olabilirsiniz.</p>
+            </div>
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary" id="girisButton">Giriş Yap</button>
+            </div>
             
         </form>
     </div>

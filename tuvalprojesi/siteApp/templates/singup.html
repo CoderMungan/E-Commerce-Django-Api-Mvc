@@ -26,7 +26,13 @@ Kayıt Ol
                 <input type="password" class="form-control" id="confirmPassword" name="k-onay-sifre">
                 <p id="matchout" class="form-text text-danger"></p>
             </div>
-            <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+            <div class="mb-3">
+                <p class="text-center">Zaten hesabınız var mı?</p>
+                <p class="text-center"><a href="{% url 'login' %}">Buradan</a> hesabınıza giriş yapabilirsiniz.</p></p>
+            </div>
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+            </div>
         </form>
     </div>
 </div>
