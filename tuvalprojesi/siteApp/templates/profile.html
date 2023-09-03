@@ -73,53 +73,12 @@
         {% for id,form in update %}
         <form action="{% url 'profile' profile.profileSahibi.id %}" method="post" id="formEdit" enctype="multipart/form-data">
             {% csrf_token %}
-              {{form}}
-            <!-- <p class="text-center">Resminizi Seçiniz</p>
-                <div class="mb-3">
-                    <input class="form-control" type="file" placeholder="Resim Seç" name="resim"/>
-                </div>
-                <p class="text-center">Sosyal Medyalar</p>
-                <div class="row mb-3">
-                    <div class="col-md-3 text-center">
-                        <i class="fa-brands fa-instagram fs-4 mt-2"></i>
-                    </div>
-                    <div class="col-md-9">
-                        <input class="form-control" type="text" placeholder="Instagram" name="instagram">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-3 text-center">
-                        <i class="fa-brands fa-facebook fs-4 mt-2"></i>
-                    </div>
-                    <div class="col-md-9">
-                        <input class="form-control" type="text" placeholder="Facebook" name="facebook">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-3 text-center">
-                        <i class="fa-brands fa-twitter fs-4 mt-2"></i>
-                    </div>
-                    <div class="col-md-9">
-                        <input class="form-control" type="text" placeholder="Twitter" name="twitter">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-3 text-center">
-                        <i class="fa-solid fa-earth-americas fs-4 mt-2"></i>
-                    </div>
-                    <div class="col-md-9">
-                        <input class="form-control" type="text" placeholder="Web Site" name="website">
-                    </div>
-                </div>
-                <hr>
-                <p class="text-center">Biografi</p>
-                <textarea name="biografi" id="" cols="40" rows="5"></textarea>
-                -->
+            {{form}}
                 <div class="mt-3 text-center">
                     <button class="btn btn-warning" type="submit" id="btnformGonder">Gönder!</button>
                 </div> 
-            </form>
-            {% endfor %}
+        </form>
+        {% endfor %}
         </div>
 
 

@@ -1,12 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Font belirttik */
+body {
+  font-family: 'Nunito', sans-serif !important;
+}
+
+
+.nav-link {
+  font-family: cursive !important;
+}
+
 .swiper {
     height: 300px;
 }
+
+
 .carousel-inner .carousel-item {
   transition: transform 2s ease-in-out;
 }

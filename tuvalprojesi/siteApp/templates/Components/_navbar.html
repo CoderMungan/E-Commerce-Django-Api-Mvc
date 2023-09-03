@@ -1,40 +1,40 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-body-secondary">
     <div class="container-fluid">
-      <a  class="navbar-brand" href="{% url 'home' %}" style="font-family: cursive;">Elif-Art</a>
+      <a class="navbar-brand ms-3" href="{% url 'home' %}" style="font-family: cursive;">Elif-Art</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav m-auto me-0 mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}"><button class="btn btn-warning">Anasayfa</button></a>
+            <a class="nav-link" href="{% url 'home' %}">Anasayfa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'hakkimda' %}"><button class="btn btn-warning">Hakkımda</button></a>
+            <a class="nav-link" href="{% url 'hakkimda' %}">Hakkımda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'urun' %}"><button class="btn btn-warning">Ürünler</button></a>
+            <a class="nav-link" href="{% url 'urun' %}">Ürünler</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'iletisim' %}"><button class="btn btn-warning">İletişim</button></a>
+            <a class="nav-link" href="{% url 'iletisim' %}">İletişim</a>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-user"></i>{% if request.user.is_authenticated %}
-                      {{request.user.username}}
+                    <i class="fa-solid fa-user"></i>{% if not request.user.is_authenticated %}<span class="ms-2">Üye ol veya Giriş yap</span>
                     {% endif %}
+                      {{request.user.username}}
                 </a>
                 {% if request.user.is_authenticated %}
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'profile' request.user.id %}">Profil</a></li>
-                  <li><a class="dropdown-item" href="{% url 'logout' %}">Çıkış Yap</a></li>
+                  <li><a class="dropdown-item nav-link" href="{% url 'profile' request.user.id %}"><i class="fa-solid fa-user-tie"></i> Profil</a></li>
+                  <li><a class="dropdown-item nav-link" href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Çıkış Yap</a></li>
                 </ul>
                 {% endif %}
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'login' %}">Giriş Yap</a></li>
-                  <li><a class="dropdown-item" href="{% url 'singup' %}">Kayıt Ol</a></li>
+                  <li><a class="dropdown-item nav-link" href="{% url 'login' %}"><i class="fa-solid fa-arrow-right-to-bracket"></i> Giriş Yap</a></li>
+                  <li><a class="dropdown-item nav-link" href="{% url 'singup' %}"><i class="fa-regular fa-pen-to-square"></i> Kayıt Ol</a></li>
                 </ul>
               </li>
         </ul>
