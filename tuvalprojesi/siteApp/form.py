@@ -8,4 +8,4 @@ class UpdateProfile(forms.ModelForm):
     class Meta:
 
         model = ProfileModel
-        fields = "__all__"
+        fields = ["profileAvatar","profileBio","profileLocation","profileInstagram","profileTwitter","profileFacebook","profileWebPage"]
