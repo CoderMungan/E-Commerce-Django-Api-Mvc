@@ -1,50 +1,35 @@
-<div class="row justify-center mt-5">
-    {% if searchUrunler%}
-    {% for urunke in searchUrunler %}
-    <div class="col-md-4">
-        <div class="card mt-5 ">
-            <img src={{urunke.image}} class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title text-center">{{urunke.sanatEseriBaslik}}</h5>
-                <p style="overflow: hidden;" class="card-text text-center">
-                    {{urunke.sanatEseriAciklamasi}}
-                </p>
-            </div>
-            <div class="card-body text-center">
-                <a href="{% url 'urundetay' urunke.id %}"><button class="btn btn-warning">Detay'a git</button></a>
-            </div>
-            <div class="card-footer text-center">
-                <small class="text-body-secondary">{{urunke.createdAt}}</small>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-    {% endif %}
-
-    {% if searchUrunler is None %}
-
-    {% for urun in urunler %}
-    <div class="col-md-4">
-        <div class="card mt-5">
-            <img src={{urun.image.url}} class="card-img-top object-fit-cover" height="300px"  alt="...">
-            <div class="card-body">
-                <h5 class="card-title text-center">{{urun.sanatEseriBaslik}}</h5>
-                <p style="overflow: hidden;" class="card-text text-center">{{urun.sanatEseriAciklamasi}}</p>
-            </div>
-            <div class="card-body text-center">
-                <button class="btn btn-warning p-md-1 my-1 text-decoration-none mb-3 mt-2" role="button">
-                    {{urun.fiyat}}₺
-                </button>
-            </div>
-            <div class="card-body text-center">
-                <a class="link-underline link-underline-opacity-0 link-body-emphasis" href="{% url 'urundetay' urun.id %}"><button class="btn btn-warning">Detay'a git</button></a>
-            </div>
-            <div class="card-footer text-center">
-                <small class="text-body-secondary">{{urun.createdAt}}</small>
+{% load static %}
+<div class="container-fluid pt-5 pb-3">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Ürünlerimiz</span></h2>
+    <div class="row px-xl-5">
+        {% for urun in urunler %}
+        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+            <div class="product-item bg-light mb-4">
+                <div class="product-img position-relative overflow-hidden">
+                    <img class="img-fluid w-100" src={{urun.image.url}} alt="Urun Bulunamadı">
+                    <div class="product-action">
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="text-center py-4">
+                    <a class="h6 text-decoration-none text-truncate" href="">{{urun.sanatEseriBaslik}}</a>
+                    <div class="d-flex align-items-center justify-content-center mt-2">
+                        <h5 class="me-1">{{urun.fiyat}}₺</h5><h6 class="text-muted ml-2"><del>{{urun.eskiFiyat}}₺</del></h6>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center mb-1">
+                        <small class="fa fa-star text-primary mr-1"></small>
+                        <small class="fa fa-star text-primary mr-1"></small>
+                        <small class="fa fa-star text-primary mr-1"></small>
+                        <small class="fa fa-star text-primary mr-1"></small>
+                        <small class="fa fa-star text-primary mr-1"></small>
+                        <small>(99)</small>
+                    </div>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-
-    {% endfor %}
-    {% endif %}
 </div>
