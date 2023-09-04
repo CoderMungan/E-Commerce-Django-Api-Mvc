@@ -1,0 +1,56 @@
+
+  
+
+<div class="owl-carousel " >
+    {% for urun in urunler %}
+
+   
+        <div class="card mt-5 ">
+            <img src={{urun.image}} class="card-img-top object-fit-cover" style="max-height:200px;"  alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-center">{{urun.sanatEseriBaslik}}</h5>
+                <p style="overflow: hidden;" class="card-text text-center">{{urun.sanatEseriAciklamasi}}</p>
+            </div>
+            <div class="card-body text-center">
+                <button class="btn btn-warning p-md-1 my-1 text-decoration-none mb-3 mt-2" role="button">
+                    {{urun.fiyat}}₺
+                </button>
+            </div>
+            <div class="card-body text-center">
+                <button class="btn btn-warning"><a class="link-underline link-underline-opacity-0 link-body-emphasis" href="{% url 'urundetay' urun.id %}">Detay'a git</a></button>
+            </div>
+            <div class="card-footer text-center">
+                <small class="text-body-secondary">{{urun.createdAt}}</small>
+            </div>
+        </div>
+   
+
+ 
+    
+    <!-- Daha fazla öğe ekleyebilirsiniz -->
+    {% endfor %}
+</div>
+<script>
+    $(document).ready(function(){
+    $('.owl-carousel').owlCarousel({
+        loop: true, // Sonsuz döngü etkin
+        margin: 50,  // Öğeler arası boşluk
+        autoplayHoverPause: true,// Fare ile üzerine gelindiğinde otomatik oynatmayı durdur
+        autoplay: true,
+        smartSpeed:1250, // Otomatik oynatmayı etkinleştir
+        autoplayTimeout: 2000, // Otomatik oynatma süresi (1 saniye)
+       
+        responsive: {
+            0: {
+                items: 1 // Ekran genişliği 0px - 767px arasında 1 öğe göster
+            },
+            768: {
+                items: 3 // Ekran genişliği 768px ve üzerinde 3 öğe göster
+            }
+        }
+    });
+});
+</script>
+
+
+
