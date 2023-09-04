@@ -3,19 +3,25 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Tasarim(models.Model):
+class Katagori(models.Model):
+    katagori = models.CharField(("Kategoriler"), max_length=50)
 
+    def __str__(self) -> str:
+        return self.katagori
+
+class Urun(models.Model):
     image = models.ImageField(("Resim Dosya"), upload_to="", height_field=None, width_field=None, max_length=None)
-    eskiFiyat = models.IntegerField(("Eski Fiyat"), blank=True)
     fiyat = models.IntegerField(("Fiyat"), blank=True)
-    sanatci = models.ForeignKey(User, verbose_name=("Sanatci"), on_delete=models.CASCADE)
-    sanatEseriBaslik = models.CharField(("Sanat Eseri Başlığı"), max_length=500)
-    sanatEseriAciklamasi = models.TextField(("Sanat Eseri İçeriği"), max_length=500)
+    eskiFiyat = models.IntegerField(("Eski Fiyat"), blank=True)
+    kategori = models.ForeignKey(Katagori, verbose_name=("Ürün Kategorisi"), on_delete=models.CASCADE, blank=False)
+    urunBaslik = models.CharField(("Ürün Başlık"), max_length=500)
+    urunAciklama = models.TextField(("Ürün İçerik"), max_length=500)
     createdAt = models.DateTimeField(("Oluşturulma Tarihi"), auto_now=True)
+    urunBegenme = models.BooleanField(("Beğenme"), blank=True)
 
 
     def __str__(self) -> str:
-        return self.sanatEseriBaslik
+        return self.urunBaslik
     
 
 class Hakkimizda(models.Model):
@@ -40,7 +46,7 @@ class Iletisim(models.Model):
 
 class YorumYap(models.Model):
 
-    urun = models.ForeignKey(Tasarim, verbose_name=("Ürün Adı"), on_delete=models.CASCADE)
+    urun = models.ForeignKey(Urun, verbose_name=("Ürün Adı"), on_delete=models.CASCADE)
     yorumSahibi = models.ForeignKey(User, verbose_name=("Yorun sahibi"), on_delete=models.CASCADE)
     yorumBaslik = models.CharField(("Yorumun Başlığı"), max_length=100)
     yorumIcerik = models.TextField(("Yorum İçeriği"), max_length=500)

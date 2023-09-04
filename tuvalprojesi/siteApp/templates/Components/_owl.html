@@ -1,19 +1,19 @@
 
   
 
-<div class="owl-carousel " >
+<div class="owl-carousel">
     {% for urun in urunler %}
         <div class="card">
             <div class="card shadow-sm">
                 <div class="row">
                     <div class="col-md-6">
-                        <img src={{urun.image.url}} class="card-img-top object-fit-cover" height="250px"
+                        <img src={{urun.image.url}} class="card-img-top object-fit-cover" height="350px"
                             alt="Ürün Fotoğrafı Bulunamadı">
                     </div>
                     <div class="col-md-6">
-                        <h3 class="text-center mt-3">{{urun.sanatEseriBaslik}}</h3>
+                        <h3 class="text-center mt-3">{{urun.urunBaslik}}</h3>
                         <div class="overflow-hidden" style="max-height: 100px;">
-                            <p class="text-center mt-3">{{urun.sanatEseriAciklamasi}}</p>
+                            <p class="text-center mt-3">{{urun.urunAciklama}}</p>
                         </div>
                             <div class="text-center my-4"> <a href="{% url 'urundetay' urun.id %}"
                                     class="btn btn-warning">Detaya Git</a> </div>

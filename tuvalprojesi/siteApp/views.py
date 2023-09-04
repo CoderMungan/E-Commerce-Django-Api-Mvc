@@ -1,6 +1,6 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from .models import Tasarim, Hakkimizda, Iletisim, YorumYap, ProfileModel
+from .models import Urun, Hakkimizda, Iletisim, YorumYap, ProfileModel, Katagori
 
 # djangonun user modelini dahil et
 from django.contrib.auth.models import User
@@ -13,8 +13,12 @@ from .form import *
 def index(request):
 
     context = {}
-    urunler = Tasarim.objects.all()
+    urunler = Urun.objects.all()
     context['urunler'] = urunler
+
+
+    kategoriler = Katagori.objects.all()
+    context['kategoriler'] = kategoriler
 
     # Arama post geçiliyor
 
@@ -29,7 +33,7 @@ def searchBar(request):
         # Post geldiyse ve boş değil ise
         print("index fn:", arama)
         if arama:
-            searchUrun = Tasarim.objects.filter(Q(sanatEseriBaslik__icontains = arama)).all()   
+            searchUrun = Urun.objects.filter(Q(sanatEseriBaslik__icontains = arama)).all()   
             context['searchUrunler'] = searchUrun
         elif arama == "":
             return redirect('home')
@@ -51,7 +55,7 @@ def urunler(request):
 
     context = {}
 
-    urunler = Tasarim.objects.all()
+    urunler = Urun.objects.all()
     
     context['urunler'] = urunler
 
@@ -77,7 +81,7 @@ def urundetay(request, urunId):
 
     urunDetay = {}
 
-    dbFilter = Tasarim.objects.filter(id = urunId).first()
+    dbFilter = Urun.objects.filter(id = urunId).first()
 
     urunDetay['urunDetayi'] = dbFilter
 
@@ -213,7 +217,7 @@ def profile(request, profileID):
 
 def deleteurun(request,urunDetayiid):
 
-    deleted=Tasarim.objects.filter(id=urunDetayiid).first()
+    deleted=Urun.objects.filter(id=urunDetayiid).first()
 
     if request.user.is_authenticated and request.user.is_superuser:
 
