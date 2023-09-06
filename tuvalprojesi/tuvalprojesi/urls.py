@@ -39,7 +39,6 @@ urlpatterns = [
     path('singup', singup, name="singup"),
     path('profile/<profileID>', profile , name='profile'),
     path('404', errorpage, name='404'),
-    path("urundetay/<urunDetayiid>/", deleteurun, name="deleteurun"),
     path('arama', searchBar, name="search"),
     path('logout', cikis, name="logout")
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

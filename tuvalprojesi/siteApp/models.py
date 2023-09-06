@@ -10,12 +10,17 @@ class Katagori(models.Model):
         return self.katagori
 
 class Urun(models.Model):
-    image = models.ImageField(("Resim Dosya"), upload_to="", height_field=None, width_field=None, max_length=None)
+    image = models.ImageField(("Ürünün Resmi"), upload_to="", height_field=None, width_field=None, max_length=None)
+    image2 = models.ImageField(("Ürünün 2. Resmi"), upload_to="", height_field=None, width_field=None, max_length=None)
+    image3 = models.ImageField(("Ürünün 3. Resmi"), upload_to="", height_field=None, width_field=None, max_length=None, blank=True)
+    image4 = models.ImageField(("Ürünün 4. Resmi"), upload_to="", height_field=None, width_field=None, max_length=None,blank=True)
+    image5 = models.ImageField(("Ürünün 5. Resmi"), upload_to="", height_field=None, width_field=None, max_length=None,blank=True)
     fiyat = models.IntegerField(("Fiyat"), blank=True)
     eskiFiyat = models.IntegerField(("Eski Fiyat"), blank=True)
     kategori = models.ForeignKey(Katagori, verbose_name=("Ürün Kategorisi"), on_delete=models.CASCADE, blank=False)
     urunBaslik = models.CharField(("Ürün Başlık"), max_length=500)
-    urunAciklama = models.TextField(("Ürün İçerik"), max_length=500)
+    urunAciklama = models.TextField(("Ürün Açıklaması"), max_length=500)
+    urunDetayAciklama = models.TextField(("Ürün Detay Açıklaması"), max_length=1500)
     createdAt = models.DateTimeField(("Oluşturulma Tarihi"), auto_now=True)
     urunBegenme = models.BooleanField(("Beğenme"), default=False ,blank=True)
     carouselUrun = models.BooleanField(("Ürün Anasayfaya Çıksın mı?"), default=False , blank=True)

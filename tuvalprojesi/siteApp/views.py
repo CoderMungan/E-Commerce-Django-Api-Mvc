@@ -80,19 +80,11 @@ def urundetay(request, urunId):
 
     urunDetay = {}
 
-    dbFilter = Urun.objects.filter(id = urunId).first()
+    urun_detay = Urun.objects.filter(id = urunId).first()
+    urunDetay['urunDetayi'] = urun_detay
 
-    urunDetay['urunDetayi'] = dbFilter
-
-    if request.method == "POST":
-        yorumBaslik = request.POST.get('yorumBaslik')
-        yorumIcerik = request.POST.get('yorumIcerik')
-        YorumYap.objects.create(urun = dbFilter, yorumSahibi = request.user, yorumBaslik = yorumBaslik, yorumIcerik = yorumIcerik)
-        return redirect('urundetay', urunId)
-
-    urunveyorum = YorumYap.objects.filter(urun__id = urunId).all()
-    urunDetay["yorumlar"] = urunveyorum
-
+    yorum_detay = YorumYap.objects.filter(urun__id = urunId).all()
+    urunDetay['yorumlar'] = yorum_detay
 
     return render(request, "urundetay.html" , urunDetay)
 
@@ -219,16 +211,3 @@ def profile(request, profileID):
 
     
     return render(request, 'profile.html', context)
-
-
-def deleteurun(request,urunDetayiid):
-
-    deleted=Urun.objects.filter(id=urunDetayiid).first()
-
-    if request.user.is_authenticated and request.user.is_superuser:
-
-        deleted.delete()
-        return redirect('urun')
-    
-    else:
-        return redirect('404')
