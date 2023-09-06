@@ -16,6 +16,7 @@ def index(request):
     urunler = Urun.objects.all()
     context['urunler'] = urunler
 
+    
 
     kategoriler = Katagori.objects.all()
     context['kategoriler'] = kategoriler

@@ -17,7 +17,10 @@ class Urun(models.Model):
     urunBaslik = models.CharField(("Ürün Başlık"), max_length=500)
     urunAciklama = models.TextField(("Ürün İçerik"), max_length=500)
     createdAt = models.DateTimeField(("Oluşturulma Tarihi"), auto_now=True)
-    urunBegenme = models.BooleanField(("Beğenme"), blank=True)
+    urunBegenme = models.BooleanField(("Beğenme"), default=False ,blank=True)
+    carouselUrun = models.BooleanField(("Ürün Anasayfaya Çıksın mı?"), default=False , blank=True)
+    carouselFavori = models.BooleanField(("Sayfada İlk Çıkacak Ürün mü? DipNot: Bir tane seçilebilir!"), default=False , blank=True)
+    indirim = models.IntegerField(("İndirim Oranı: %'siz yazınız!"), default=0, blank=True)
 
 
     def __str__(self) -> str:
@@ -60,12 +63,12 @@ class ProfileModel(models.Model):
 
     profileSahibi = models.ForeignKey(User, verbose_name=("Profil Sahibi"), on_delete=models.CASCADE)
     profileAvatar = models.ImageField(("Avatar"), upload_to="", height_field=None, default="/Uploads/Avatar.png", width_field=None, max_length=None, blank=True)
-    profileBio = models.TextField(("Biografi"), max_length=500, blank=True)
-    profileLocation = models.CharField(("Konum"), max_length=150, blank=True)
-    profileInstagram = models.CharField(("Instagram"), max_length=150, blank=True)
-    profileTwitter = models.CharField(("Twitter"), max_length=150, blank=True)
-    profileFacebook = models.CharField(("Facebook"), max_length=150, blank=True)
-    profileWebPage = models.CharField(("Web Sayfası"), max_length=150, blank=True)
+    profileBio = models.TextField(("Biografi"), max_length=500, default="", blank=True)
+    profileLocation = models.CharField(("Konum"), max_length=150, default="" , blank=True)
+    profileInstagram = models.CharField(("Instagram"), max_length=150, default="", blank=True)
+    profileTwitter = models.CharField(("Twitter"), max_length=150, default="", blank=True)
+    profileFacebook = models.CharField(("Facebook"), max_length=150, default="", blank=True)
+    profileWebPage = models.CharField(("Web Sayfası"), max_length=150, default="", blank=True)
 
 
     def __str__(self) -> str:
