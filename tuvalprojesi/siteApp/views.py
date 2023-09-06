@@ -136,7 +136,9 @@ def singup(request):
             if kayitliMi:
                 return redirect('singup')
             else:
-                User.objects.create_user(username = kullaniciAdi, password = kullaniciSifre, email = kullaniciEmail)
+                user = User.objects.create_user(username = kullaniciAdi, password = kullaniciSifre, email = kullaniciEmail)
+                # bu usere profil ata
+                ProfileModel.objects.create(profileSahibi = user)
                 return redirect('login')
         else:
             return redirect('singup')
@@ -180,16 +182,21 @@ def profile(request, profileID):
     context = {}
 
     userFilter = User.objects.filter(id = profileID).first()
+
+    if userFilter:
     
-    context['kullanicilar'] = userFilter
+        context['kullanicilar'] = userFilter
 
-    yorumlar = YorumYap.objects.filter(yorumSahibi__id = profileID).all()
+        yorumlar = YorumYap.objects.filter(yorumSahibi__id = profileID).all()
 
-    context['yorumlar'] = yorumlar
+        context['yorumlar'] = yorumlar
 
-    profileFront = ProfileModel.objects.filter(profileSahibi__id = profileID).all()
+        profileFront = ProfileModel.objects.filter(profileSahibi__id = profileID).all()
 
-    context['profiller'] = profileFront
+        context['profiller'] = profileFront
+
+    else:
+        context["error"] = "Böyle bir user bulunamadi"
 
 
     # Update yapmaya çalışıyorum
