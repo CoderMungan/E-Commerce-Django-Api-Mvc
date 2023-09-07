@@ -32,7 +32,7 @@ def searchBar(request):
         # Post geldiyse ve boş değil ise
         print("index fn:", arama)
         if arama:
-            searchUrun = Urun.objects.filter(Q(sanatEseriBaslik__icontains = arama)).all()   
+            searchUrun = Urun.objects.filter(urunBaslik__icontains = arama).all()   
             context['searchUrunler'] = searchUrun
         elif arama == "":
             return redirect('home')
@@ -211,3 +211,4 @@ def profile(request, profileID):
 
     
     return render(request, 'profile.html', context)
+
