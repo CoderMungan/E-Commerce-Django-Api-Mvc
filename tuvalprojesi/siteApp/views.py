@@ -76,10 +76,10 @@ def iletisim(request):
         return render(request, "iletisim.html")
 
 
+
 def urundetay(request, urunId):
 
     urunDetay = {}
-
     urun_detay = Urun.objects.filter(id = urunId).first()
     urunDetay['urunDetayi'] = urun_detay
 
