@@ -102,3 +102,20 @@
     
 })(jQuery);
 
+// Profile Sayfası JavaScript Form tarafı!
+const profileEditBtn = document.getElementById('ProfileEdit')
+const form = document.getElementById('formEdit')
+const btnformGonder = document.getElementById('btnformGonder')
+
+if (profileEditBtn){
+    form.style.display = "none";
+}
+
+profileEditBtn.addEventListener('click',function(){
+    form.style.display = "block";
+})
+
+btnformGonder.addEventListener('click', function(){
+    form.style.display = "none"
+})
+

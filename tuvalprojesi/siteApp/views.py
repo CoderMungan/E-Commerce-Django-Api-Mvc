@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Urun, Hakkimizda, Iletisim, YorumYap, ProfileModel, Katagori
+from .models import Urun, Hakkimizda, Iletisim, YorumYap, ProfileModel, Katagori, Sepet
 
 # djangonun user modelini dahil et
 from django.contrib.auth.models import User
@@ -69,10 +69,19 @@ def iletisim(request):
         message = request.POST.get('message')
 
         Iletisim.objects.create(name = name, email = email, mesajKonusu = subject, mesajinIcerigi = message)
-
-        return redirect('home')
+        return redirect('iletisim')
     else:
         return render(request, "iletisim.html")
+
+def sepet(request,urunId):
+
+    urun = Urun.objects.get(id=urunId)
+    if request.user.is_authenticated:
+        Sepet.objects.create(urun = urun, user = request.user, sepeteAtilma = True, adet = +1)
+        return redirect('urundetay', urunId)
+
+    return redirect('urundetay',urunId)
+
 
 
 

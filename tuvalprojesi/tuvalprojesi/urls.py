@@ -34,6 +34,7 @@ urlpatterns = [
     path('urunlerimiz', urunler, name='urun'),
     path('iletisim', iletisim, name='iletisim'),
     path('urundetay/<urunId>', urundetay, name="urundetay"),
+    path('sepet/<urunId>', sepet, name="sepet"),
     path('urundetay/<urunId>/yorumSil/<yorumId>', yorumSil, name="yorumsil"),
     path('login', login, name="login"),
     path('singup', singup, name="singup"),

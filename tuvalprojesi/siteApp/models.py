@@ -78,3 +78,12 @@ class ProfileModel(models.Model):
 
     def __str__(self) -> str:
         return self.profileSahibi.username
+    
+class Sepet(models.Model):
+    user = models.ForeignKey(User, verbose_name=("Kullanıcı"), on_delete=models.CASCADE)
+    urun = models.ForeignKey(Urun, verbose_name=("Ürün"), on_delete=models.CASCADE)
+    sepeteAtilma = models.BooleanField(("Sepette"), default=False)
+    adet = models.PositiveIntegerField(("Kaç Adet"),default=0, blank=True)
+    
+    def __str__(self) -> str:
+        return self.urun.urunBaslik

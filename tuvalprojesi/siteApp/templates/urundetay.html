@@ -159,13 +159,7 @@
                                     <img src={{yorum.yorumSahibiProfile.profileAvatar.url}} alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                     <div class="media-body">
                                         <h6><a href="{% url 'profile' yorum.yorumSahibi.id %}">{{yorum.yorumSahibi.username}}</a><small> - <i>{{yorum.yorumAtCrated}}</i></small></h6>
-                                        <div class="text-primary mb-2">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
+                                        <h5>{{yorum.yorumBaslik}}</h5>
                                         <p>{{yorum.yorumIcerik}}</p>
                                     </div>
                                 </div>
@@ -174,16 +168,6 @@
                             <div class="col-md-6">
                                 {% if request.user.is_authenticated %}
                                 <h4 class="mb-4">Yorum Yap</h4>
-                                <div class="d-flex my-3">
-                                    <p class="mb-0 mr-2">Ürün Puanlaması :</p>
-                                    <div class="text-primary">
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
                                 <form action="{% url 'urundetay' urunDetayi.id %}" method="post">
                                     {% csrf_token %}
                                     <div class="form-group">
