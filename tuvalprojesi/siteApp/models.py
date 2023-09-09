@@ -56,6 +56,7 @@ class YorumYap(models.Model):
 
     urun = models.ForeignKey(Urun, verbose_name=("Ürün Adı"), on_delete=models.CASCADE)
     yorumSahibi = models.ForeignKey(User, verbose_name=("Yorum sahibi"), on_delete=models.CASCADE)
+    yorumSahibiProfile = models.ForeignKey("siteApp.ProfileModel", verbose_name=("Profil Modeli"), on_delete=models.CASCADE, blank=True)
     yorumBaslik = models.CharField(("Yorumun Başlığı"), max_length=100)
     yorumIcerik = models.TextField(("Yorum İçeriği"), max_length=500)
     yorumAtCrated = models.DateTimeField(("Yorumun Yapıldığı Zaman"), auto_now=True)
@@ -66,8 +67,7 @@ class YorumYap(models.Model):
 class ProfileModel(models.Model):
 
     profileSahibi = models.ForeignKey(User, verbose_name=("Profil Sahibi"), on_delete=models.CASCADE)
-    profileAvatar = models.ImageField(("Avatar"), upload_to="", height_field=None, default="/Uploads/Avatar.png", width_field=None, max_length=None, blank=True)
-    profileActivity = models.ForeignKey(YorumYap, verbose_name=("Yorumları"), on_delete=models.CASCADE)
+    profileAvatar = models.ImageField(("Avatar"), upload_to="", height_field=None, default="avatar.png", width_field=None, max_length=None, blank=True)
     profileBio = models.TextField(("Biografi"), max_length=500, default="", blank=True)
     profileLocation = models.CharField(("Konum"), max_length=150, default="" , blank=True)
     profileInstagram = models.CharField(("Instagram"), max_length=150, default="", blank=True)

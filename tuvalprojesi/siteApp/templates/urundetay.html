@@ -156,7 +156,7 @@
                                 <h4 class="mb-4">Ürün ile ilgili {{yorumlar.count}} yorum bulunmaktadır.</h4>
                                 {% for yorum in yorumlar %}                                
                                 <div class="media mb-4">
-                                    <img src={{profiller.profileAvatar.url}} alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                    <img src={{yorum.yorumSahibiProfile.profileAvatar.url}} alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                     <div class="media-body">
                                         <h6><a href="{% url 'profile' yorum.yorumSahibi.id %}">{{yorum.yorumSahibi.username}}</a><small> - <i>{{yorum.yorumAtCrated}}</i></small></h6>
                                         <div class="text-primary mb-2">

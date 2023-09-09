@@ -85,13 +85,13 @@ def urundetay(request, urunId):
     yorum_detay = YorumYap.objects.filter(urun__id = urunId).all()
     urunDetay['yorumlar'] = yorum_detay
 
-    profile = ProfileModel.objects.filter(profileSahibi = ).first()
-    urunDetay['profiller'] = profile
+    profile = ProfileModel.objects.filter(profileSahibi = request.user).first()
+    
 
     if request.method == 'POST':
         yorumbaslik = request.POST.get('yorum-baslik')
         yorumaciklama = request.POST.get('yorum-aciklama')
-        YorumYap.objects.create(urun = urun_detay, yorumSahibi = request.user, yorumBaslik = yorumbaslik, yorumIcerik = yorumaciklama)
+        YorumYap.objects.create(yorumSahibiProfile = profile, urun = urun_detay, yorumSahibi = request.user, yorumBaslik = yorumbaslik, yorumIcerik = yorumaciklama)
         return redirect('urundetay',urunId)
 
 
