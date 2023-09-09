@@ -199,7 +199,10 @@
                                     </div>
                                 </form>
                                 {% else %}
-                                <h4 class="mb-4">Yorum Yapmak İçin Lütfen Giriş Yapınız</h4>
+                                <div class="text-center">
+                                <h4>Yorum Yapmak İçin Lütfen <a href="{% url 'login' %}">Giriş</a> Yapınız</h4>
+                                <p>Daha üye değil misiniz? Kayıt olmak için lütfen <a href="{% url 'singup' %}">tıklayınız!</a></p>
+                                </div>
                                 <!-- Login ve Kayıt Ol Sayfası eklenecek -->
                                 {% endif %}
                             </div>
