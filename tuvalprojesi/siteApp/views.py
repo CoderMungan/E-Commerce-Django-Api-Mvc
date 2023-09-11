@@ -73,14 +73,23 @@ def iletisim(request):
     else:
         return render(request, "iletisim.html")
 
-def sepet(request,urunId):
 
-    urun = Urun.objects.get(id=urunId)
+
+
+
+def sepet(request,urunId,sepetId):
+
+    context = {}
+
+    urun = Urun.objects.filter(id = urunId).first()
+    context['urunler'] = urun
+
     if request.user.is_authenticated:
         Sepet.objects.create(urun = urun, user = request.user, sepeteAtilma = True, adet = +1)
-        return redirect('urundetay', urunId)
+        return redirect('home')
 
-    return redirect('urundetay',urunId)
+    return render(request, "sepet.html" , urunId, sepetId, context)
+
 
 
 
@@ -90,6 +99,9 @@ def urundetay(request, urunId):
     urunDetay = {}
     urun_detay = Urun.objects.filter(id = urunId).first()
     urunDetay['urunDetayi'] = urun_detay
+
+    sepet = Sepet.objects.filter(urun__id = urunId).first()
+    urunDetay['sepetler'] = sepet
 
     yorum_detay = YorumYap.objects.filter(urun__id = urunId).all()
     urunDetay['yorumlar'] = yorum_detay
