@@ -26,6 +26,7 @@ from django.urls import path
 
 # Kendi app'imizi çekiyoruz
 from siteApp.views import *
+from siteApi.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,7 +35,13 @@ urlpatterns = [
     path('urunlerimiz', urunler, name='urun'),
     path('iletisim', iletisim, name='iletisim'),
     path('urundetay/<urunId>', urundetay, name="urundetay"),
-    path('sepetim/<urunId>/sepet/<sepetId>', sepet, name="sepet"),
+
+    # Apiler
+    path('sepet/<urunId>', sepete_ekle, name="sepet"),
+    path('sepet-adet/<urunId>', sepet_adet_ekle, name="adet"),
+
+
+
     path('urundetay/<urunId>/yorumSil/<yorumId>', yorumSil, name="yorumsil"),
     path('login', login, name="login"),
     path('singup', singup, name="singup"),
