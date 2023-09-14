@@ -111,11 +111,11 @@ if (profileEditBtn){
     form.style.display = "none";
 }
 
-profileEditBtn.addEventListener('click',function(){
-    form.style.display = "block";
-})
+const profileEdit = () => {
+    form.style.display = "block"
+}
 
-btnformGonder.addEventListener('click', function(){
+const formGonder = () => {
     form.style.display = "none"
-})
+}
 

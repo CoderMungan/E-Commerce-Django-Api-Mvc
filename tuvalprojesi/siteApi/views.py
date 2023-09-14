@@ -43,3 +43,16 @@ def sepet_adet_cikar(request,urunId):
         return redirect('urundetay',urunId)
     else:
         return redirect('urundetay', urunId)
+    
+
+def sepetten_kaldir(request,urunId):
+
+    context = {}
+    sepet = Sepet.objects.filter(urun__id = urunId).first()
+    if sepet:
+        sepet.delete()
+        context['message'] = "Sepetten Kaldırıldı"
+        return redirect('urundetay', urunId)
+    
+    return JsonResponse(context)
+

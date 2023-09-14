@@ -40,6 +40,7 @@ urlpatterns = [
     path('sepet/<urunId>', sepete_ekle, name="sepet"),
     path('sepet-adet-ekle/<urunId>', sepet_adet_ekle, name="adet-ekle"),
     path('sepet-adet-cikar/<urunId>', sepet_adet_cikar, name="adet-cikar"),
+    path('sepet-kaldir/<urunId>', sepetten_kaldir, name="sepet-kaldir"),
 
 
 

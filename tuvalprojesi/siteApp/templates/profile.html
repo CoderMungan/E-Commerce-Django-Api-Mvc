@@ -23,7 +23,7 @@
             <p class="text-center">{{profile.profileBio}}</p>
         </div>
         <div class="mb-3 text-center">
-            <button class="btn btn-warning" id="ProfileEdit">Profili Düzenle</button>
+            <button class="btn btn-warning" onclick="profileEdit()" id="ProfileEdit">Profili Düzenle</button>
         </div>
         <div id="profileShow">
             <hr>
@@ -87,7 +87,7 @@
             {% csrf_token %}
             {{form}}
             <div class="mt-3 text-center">
-                <button class="btn btn-warning" type="submit" id="btnformGonder">Gönder!</button>
+                <button class="btn btn-warning" type="submit" onclick="formGonder()" id="btnformGonder">Gönder!</button>
             </div>
         </form>
         {% endfor %}

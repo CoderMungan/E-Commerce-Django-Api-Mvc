@@ -120,10 +120,18 @@
                             </a>
                         </div>
                     </div>
-                    {% else %}
+                    <a href="{% url 'sepet-kaldir' urunDetayi.id  %}">
+                        <button class="btn btn-primary px-3"><i class="fa-solid fa-trash me-2"></i> Sepetten Kaldır </button>
+                        </a>
+                    </div>
+                    {% elif request.user.is_authenticated %}
                     <a href="{% url 'sepet' urunDetayi.id  %}">
                         <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Sepete Ekle </button>
                         </a>
+                    </div>
+                    {% else %}
+                    <div class="mb-3 mt-3">
+                        <h4>Sepete eklemek için lütfen <a href="{% url 'login' %}">giriş</a> yapınız!</h4>
                     </div>
                     {% endif %}
                 <div class="d-flex pt-2">
