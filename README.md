@@ -1,18 +1,22 @@
-# Tuval
+# Yapı
+1- Django FrameWork ile Mvc yapısıyla yazılmıştır.
+2- Http aracılığıyla Jsonresponse döndürülerek Api yazılmıştır.
+3- Üyelik, Ürün, Yorum, Sepet, Profil, Kategori modülleri mevcuttur.
+4- Hakkımızda ve iletişim sayfası dahil olmak üzere tüm sayfa tamamen back-end tarafında admin panelden değiştirilebilir.
+5- Junior iken yazdığım E-Ticaret Sayfasıdır tekrarları mağzur görün. (Middleware, AbstracUser, BaseAbstracUser gibi işi kolaylaştıran taraflar yazılmadan sunulmuştur. Pratik Amaçlıdır.)
 
-<h1>Devam Eden Sürekli Güncellenen Proje</h1>
-<br>
-<img width="500" alt="Ekran Resmi 2023-08-28 02 45 01" src="https://github.com/CoderMungan/Tuval/assets/126997544/18af413a-b947-4430-8489-23454242014e">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 44 58" src="https://github.com/CoderMungan/Tuval/assets/126997544/190c2b69-b954-4188-a237-669347bc74be">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 44 37" src="https://github.com/CoderMungan/Tuval/assets/126997544/d2a7ef7a-6c15-4a88-9516-9eb20df11096">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 44 25" src="https://github.com/CoderMungan/Tuval/assets/126997544/6b8e51d0-d085-418d-b597-4d2f2b4e28c7">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 45 28" src="https://github.com/CoderMungan/Tuval/assets/126997544/bf111139-5d36-4016-9714-f23bfbd5fa6b">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 45 51" src="https://github.com/CoderMungan/Tuval/assets/126997544/facf9063-1669-4e7e-9071-9cd169d6e6d6">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 45 19" src="https://github.com/CoderMungan/Tuval/assets/126997544/19b15c07-6f62-40ad-ac90-c71b7e2d1b26">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 45 11" src="https://github.com/CoderMungan/Tuval/assets/126997544/cf650c8d-c932-44a8-9393-d14e6cf7f9d8">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 45 07" src="https://github.com/CoderMungan/Tuval/assets/126997544/557ce9f7-4481-482d-bad8-ccf9cf6107a2">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 45 49" src="https://github.com/CoderMungan/Tuval/assets/126997544/cd913c7d-a33d-4438-adba-c9f976d39b24">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 45 47" src="https://github.com/CoderMungan/Tuval/assets/126997544/c788b7d1-ed07-4038-b951-0cb683de6484">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 45 41" src="https://github.com/CoderMungan/Tuval/assets/126997544/690c6f23-6e6c-44a4-817b-037c5a25fce5">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 45 38" src="https://github.com/CoderMungan/Tuval/assets/126997544/00dc9a34-b734-4c8b-b53d-15bf8989d61b">
-<img width="500" alt="Ekran Resmi 2023-08-28 02 45 30" src="https://github.com/CoderMungan/Tuval/assets/126997544/912516be-24b1-4828-9b4f-9db3c6555fa9">
+
+# Görseller
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 18 31" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/70b49408-9896-4a7a-9dd8-4cd2e8c933cf">
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 18 57" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/614f122f-a243-4317-a865-2d5c9fb6eddf">
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 20 51" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/d23a9938-2c3b-47d5-b050-54aa10bf564a">
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 20 12" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/dbcf1064-af94-4ac7-a2b3-e4d2ad0197e1">
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 19 38" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/c9a6dd08-e618-4053-a772-e3d6f8291fb6">
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 20 32" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/18f511ce-129b-40d7-a0c5-c665479d7ed6">
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 20 00" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/5ad72912-d1d6-410c-b35f-cf1ac4f42959">
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 18 47" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/53866b6b-901d-4e73-bdf6-4033a7eafc51">
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 20 16" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/395c0b38-1d28-443e-a896-c110e33d9f53">
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 18 25" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/aad167f2-d938-4305-88cd-98a2d029e29a">
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 19 31" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/9a802b96-dfe0-4202-a4bd-e0ca663755b0">
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 19 47" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/6287d520-8c12-4193-b965-14fa42b25038">
+<img width="1440" alt="Ekran Resmi 2023-09-15 01 19 05" src="https://github.com/CoderMungan/E-Commerce-Django-Api-Mvc/assets/126997544/07564c02-8fbf-45c5-a716-e2de02c6ffe1">
