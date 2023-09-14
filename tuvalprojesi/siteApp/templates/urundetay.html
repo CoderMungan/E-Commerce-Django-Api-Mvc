@@ -100,25 +100,32 @@
                         </div>
                     </form>
                 </div>
+                {% if sepetler %}
+                <div class="mb-3">
+                    <p>Adet Giriniz:</p>
+                </div>
                 <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3" style="width: 130px;">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus">
+                            <a href="{% url 'adet-cikar' urunDetayi.id %}"><button class="btn btn-primary btn-minus">
                                 <i class="fa fa-minus"></i>
                             </button>
+                            </a>
                         </div>
-                        <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
+                        <input type="text" class="form-control bg-secondary border-0 text-center" name="adet" value={{sepetler.adet}}>
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
+                            <a href="{% url 'adet-ekle' urunDetayi.id %}"><button class="btn btn-primary btn-plus">
                                 <i class="fa fa-plus"></i>
                             </button>
+                            </a>
                         </div>
                     </div>
+                    {% else %}
                     <a href="{% url 'sepet' urunDetayi.id  %}">
-                    <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
-                        Cart</button>
-                    </a>
-                </div>
+                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Sepete Ekle </button>
+                        </a>
+                    </div>
+                    {% endif %}
                 <div class="d-flex pt-2">
                     <strong class="text-dark mr-2">Share on:</strong>
                     <div class="d-inline-flex">

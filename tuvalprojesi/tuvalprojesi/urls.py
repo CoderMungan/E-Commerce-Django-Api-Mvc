@@ -38,7 +38,8 @@ urlpatterns = [
 
     # Apiler
     path('sepet/<urunId>', sepete_ekle, name="sepet"),
-    path('sepet-adet/<urunId>', sepet_adet_ekle, name="adet"),
+    path('sepet-adet-ekle/<urunId>', sepet_adet_ekle, name="adet-ekle"),
+    path('sepet-adet-cikar/<urunId>', sepet_adet_cikar, name="adet-cikar"),
 
 
 
